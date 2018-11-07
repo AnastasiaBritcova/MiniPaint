@@ -17,43 +17,22 @@ namespace MiniPaint
             InitializeComponent();
         }
 
-        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        private void ButtonColors_Click(object sender, EventArgs e)
         {
+            if (colorDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Graphics gr = ColorBox.CreateGraphics();
+            Point loc_temp = ((Button)sender).Location;
+            loc_temp.X -= 2;
+            loc_temp.Y -= 2;
 
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ColorBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LineToolsBTN_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
+            gr.FillRectangle(Brushes.Aqua, new Rectangle(loc_temp.X, loc_temp.Y, 36, 36));
 
         }
     }
