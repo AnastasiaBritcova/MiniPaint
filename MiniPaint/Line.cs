@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 
 namespace MiniPaint
 {
-    abstract class Step
+    class Line:Step
     {
-        Pen pen;
-        Point start;
-        Point end;
+        override public void Draw() {
 
-       public abstract void Draw(); 
+
+        }
     }
 }

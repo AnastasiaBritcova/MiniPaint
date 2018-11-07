@@ -41,6 +41,7 @@
             this.MenuCopy = new System.Windows.Forms.ToolStripButton();
             this.MenuPaste = new System.Windows.Forms.ToolStripButton();
             this.groupBoxForTools = new System.Windows.Forms.GroupBox();
+            this.WeihtLineBTN = new System.Windows.Forms.Button();
             this.RubberToolsBTN = new System.Windows.Forms.Button();
             this.FillToolsBTN = new System.Windows.Forms.Button();
             this.TextToolsBTN = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.SquardToolsBTN = new System.Windows.Forms.Button();
             this.LineToolsBTN = new System.Windows.Forms.Button();
             this.ColorBox = new System.Windows.Forms.GroupBox();
+            this.leftRBTN = new System.Windows.Forms.RadioButton();
             this.ButtonColors = new System.Windows.Forms.Button();
             this.ColorBTN8 = new System.Windows.Forms.Button();
             this.ColorBTN4 = new System.Windows.Forms.Button();
@@ -57,10 +59,11 @@
             this.ColorBTN2 = new System.Windows.Forms.Button();
             this.ColorBTN5 = new System.Windows.Forms.Button();
             this.ColorBTN1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.RightChoiceBTN = new System.Windows.Forms.Button();
+            this.leftChoiceBTN = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.rightRBTN = new System.Windows.Forms.RadioButton();
             this.toolStripMenu.SuspendLayout();
             this.groupBoxForTools.SuspendLayout();
             this.ColorBox.SuspendLayout();
@@ -164,17 +167,29 @@
             // 
             // groupBoxForTools
             // 
+            this.groupBoxForTools.Controls.Add(this.WeihtLineBTN);
             this.groupBoxForTools.Controls.Add(this.RubberToolsBTN);
             this.groupBoxForTools.Controls.Add(this.FillToolsBTN);
             this.groupBoxForTools.Controls.Add(this.TextToolsBTN);
             this.groupBoxForTools.Controls.Add(this.ElipseToolsBTN);
             this.groupBoxForTools.Controls.Add(this.SquardToolsBTN);
             this.groupBoxForTools.Controls.Add(this.LineToolsBTN);
-            this.groupBoxForTools.Location = new System.Drawing.Point(529, 12);
+            this.groupBoxForTools.Location = new System.Drawing.Point(501, 18);
             this.groupBoxForTools.Name = "groupBoxForTools";
-            this.groupBoxForTools.Size = new System.Drawing.Size(131, 79);
+            this.groupBoxForTools.Size = new System.Drawing.Size(187, 79);
             this.groupBoxForTools.TabIndex = 1;
             this.groupBoxForTools.TabStop = false;
+            // 
+            // WeihtLineBTN
+            // 
+            this.WeihtLineBTN.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.WeihtLineBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("WeihtLineBTN.BackgroundImage")));
+            this.WeihtLineBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.WeihtLineBTN.Location = new System.Drawing.Point(114, 10);
+            this.WeihtLineBTN.Name = "WeihtLineBTN";
+            this.WeihtLineBTN.Size = new System.Drawing.Size(73, 69);
+            this.WeihtLineBTN.TabIndex = 6;
+            this.WeihtLineBTN.UseVisualStyleBackColor = false;
             // 
             // RubberToolsBTN
             // 
@@ -239,6 +254,8 @@
             // 
             // ColorBox
             // 
+            this.ColorBox.Controls.Add(this.rightRBTN);
+            this.ColorBox.Controls.Add(this.leftRBTN);
             this.ColorBox.Controls.Add(this.ButtonColors);
             this.ColorBox.Controls.Add(this.ColorBTN8);
             this.ColorBox.Controls.Add(this.ColorBTN4);
@@ -248,13 +265,25 @@
             this.ColorBox.Controls.Add(this.ColorBTN2);
             this.ColorBox.Controls.Add(this.ColorBTN5);
             this.ColorBox.Controls.Add(this.ColorBTN1);
-            this.ColorBox.Controls.Add(this.button2);
-            this.ColorBox.Controls.Add(this.button1);
-            this.ColorBox.Location = new System.Drawing.Point(666, 12);
+            this.ColorBox.Controls.Add(this.RightChoiceBTN);
+            this.ColorBox.Controls.Add(this.leftChoiceBTN);
+            this.ColorBox.Location = new System.Drawing.Point(694, 27);
             this.ColorBox.Name = "ColorBox";
             this.ColorBox.Size = new System.Drawing.Size(281, 69);
             this.ColorBox.TabIndex = 2;
             this.ColorBox.TabStop = false;
+            // 
+            // leftRBTN
+            // 
+            this.leftRBTN.AutoSize = true;
+            this.leftRBTN.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.leftRBTN.Location = new System.Drawing.Point(15, 46);
+            this.leftRBTN.Name = "leftRBTN";
+            this.leftRBTN.Size = new System.Drawing.Size(14, 13);
+            this.leftRBTN.TabIndex = 11;
+            this.leftRBTN.TabStop = true;
+            this.leftRBTN.UseVisualStyleBackColor = true;
+            this.leftRBTN.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // ButtonColors
             // 
@@ -337,25 +366,26 @@
             this.ColorBTN1.Size = new System.Drawing.Size(25, 25);
             this.ColorBTN1.TabIndex = 2;
             this.ColorBTN1.UseVisualStyleBackColor = false;
+            this.ColorBTN1.Click += new System.EventHandler(this.ColorBTN1_Click);
             // 
-            // button2
+            // RightChoiceBTN
             // 
-            this.button2.BackColor = System.Drawing.Color.Lime;
-            this.button2.Location = new System.Drawing.Point(45, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 32);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = false;
+            this.RightChoiceBTN.BackColor = System.Drawing.Color.Lime;
+            this.RightChoiceBTN.Location = new System.Drawing.Point(44, 8);
+            this.RightChoiceBTN.Name = "RightChoiceBTN";
+            this.RightChoiceBTN.Size = new System.Drawing.Size(32, 32);
+            this.RightChoiceBTN.TabIndex = 1;
+            this.RightChoiceBTN.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // leftChoiceBTN
             // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(7, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 32);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.leftChoiceBTN.BackColor = System.Drawing.Color.Red;
+            this.leftChoiceBTN.Location = new System.Drawing.Point(6, 8);
+            this.leftChoiceBTN.Name = "leftChoiceBTN";
+            this.leftChoiceBTN.Size = new System.Drawing.Size(32, 32);
+            this.leftChoiceBTN.TabIndex = 0;
+            this.leftChoiceBTN.UseVisualStyleBackColor = false;
+            this.leftChoiceBTN.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -365,6 +395,18 @@
             this.pictureBox1.Size = new System.Drawing.Size(848, 473);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // rightRBTN
+            // 
+            this.rightRBTN.AutoSize = true;
+            this.rightRBTN.Location = new System.Drawing.Point(53, 46);
+            this.rightRBTN.Name = "rightRBTN";
+            this.rightRBTN.Size = new System.Drawing.Size(14, 13);
+            this.rightRBTN.TabIndex = 12;
+            this.rightRBTN.TabStop = true;
+            this.rightRBTN.UseVisualStyleBackColor = true;
+            this.rightRBTN.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_1);
             // 
             // Form1
             // 
@@ -381,6 +423,7 @@
             this.toolStripMenu.PerformLayout();
             this.groupBoxForTools.ResumeLayout(false);
             this.ColorBox.ResumeLayout(false);
+            this.ColorBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -407,9 +450,9 @@
         private System.Windows.Forms.Button SquardToolsBTN;
         private System.Windows.Forms.Button LineToolsBTN;
         private System.Windows.Forms.GroupBox ColorBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button leftChoiceBTN;
         private System.Windows.Forms.Button ColorBTN1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button RightChoiceBTN;
         private System.Windows.Forms.Button ColorBTN8;
         private System.Windows.Forms.Button ColorBTN4;
         private System.Windows.Forms.Button ColorBTN7;
@@ -420,6 +463,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button ButtonColors;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button WeihtLineBTN;
+        private System.Windows.Forms.RadioButton leftRBTN;
+        private System.Windows.Forms.RadioButton rightRBTN;
     }
 }
 

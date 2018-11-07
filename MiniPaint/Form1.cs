@@ -35,5 +35,35 @@ namespace MiniPaint
             gr.FillRectangle(Brushes.Aqua, new Rectangle(loc_temp.X, loc_temp.Y, 36, 36));
 
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ColorBTN1_Click(object sender, EventArgs e)
+        {
+            if (rightRBTN.Checked) {
+                RightChoiceBTN.BackColor = Color.White;
+            }
+
+            if (leftRBTN.Checked)
+            {
+                leftChoiceBTN.BackColor = Color.White;
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
+            Graphics gr = pictureBox1.CreateGraphics();
+            gr.DrawLine(pen, 20, 10, 300, 100);
+        }
     }
 }
+

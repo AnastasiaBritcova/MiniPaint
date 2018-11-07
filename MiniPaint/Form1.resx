@@ -543,6 +543,20 @@
         a3LDE8MnnnhimBDqPFiGAMZFBPyYk5+Zi6P4rGmwSJL/Aeo/8lLJI/GIAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="WeihtLineBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAcdJREFUeF7t3L0uBVEUhuEpUFGKaLkChZYrQClCRyVqhJNoJNwGicatIArxcwcK
+        iUhoRMG3jshEZk1Ms5eVnPdNnnp29sqZ4uyZqYiIiIiIiIiIiAagEVmSHfyyKLY3oU3Lg3zCdS+2RyEN
+        i13QWwhqd2J7VTy7TXkLQJPtVfHsPuldHE3bUrwN8S6OpnUp3oS8ibcA1F5lXEJakQ/xFoLvvbE9Cm1W
+        TuVCLtFne3EiM0JEREREREREREQtTcq+nMk5+mwv9sSOKEKblxfx/npGVT3LnIQ0Jk/iLQS1RxmV4q2J
+        twA0hRxS7Yp3cTQdSPEYSHdHUjwG0h0DSYaBJMNAkmEgyTCQZBhIModSvC3xLo6mTSmevRnEc71/sz2a
+        kpDsLwFvEajZ0URoq3It7+ItaBDZXlzJshAREREREREREVFLfFHOxxflEuKLcgnxRbmE+KJcMiGnhjx1
+        0h2PASXDQJJhIMkwkGQYSDIMJBkGkgwDSYaBJMNAkmEgyTCQZBhIMgwkGQaSTMhAOKDqLuSAiiPc7uwJ
+        lOLxkEM3tzIkIdnrvgyl3Y2EvRL9k01/QXpyjD7bC9uTsF8GERERERERERHR/1RVX6agZf4dWn0UAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
   <data name="RubberToolsBTN.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAAAAAAAD/4QCqRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAZKG
