@@ -41,7 +41,28 @@
             this.MenuDo = new System.Windows.Forms.ToolStripButton();
             this.MenuCopy = new System.Windows.Forms.ToolStripButton();
             this.MenuPaste = new System.Windows.Forms.ToolStripButton();
+            this.groupBoxForTools = new System.Windows.Forms.GroupBox();
+            this.TextToolsBTN = new System.Windows.Forms.Button();
+            this.LineToolsBTN = new System.Windows.Forms.Button();
+            this.SquardToolsBTN = new System.Windows.Forms.Button();
+            this.ElipseToolsBTN = new System.Windows.Forms.Button();
+            this.FillToolsBTN = new System.Windows.Forms.Button();
+            this.RubberToolsBTN = new System.Windows.Forms.Button();
+            this.ColorBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ColorBTN1 = new System.Windows.Forms.Button();
+            this.ColorBTN5 = new System.Windows.Forms.Button();
+            this.ColorBTN2 = new System.Windows.Forms.Button();
+            this.ColorBTN6 = new System.Windows.Forms.Button();
+            this.ColorBTN3 = new System.Windows.Forms.Button();
+            this.ColorBTN7 = new System.Windows.Forms.Button();
+            this.ColorBTN4 = new System.Windows.Forms.Button();
+            this.ColorBTN8 = new System.Windows.Forms.Button();
+            this.ToolCommonBox = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1.SuspendLayout();
+            this.groupBoxForTools.SuspendLayout();
+            this.ColorBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -140,17 +161,224 @@
             this.MenuPaste.Size = new System.Drawing.Size(23, 22);
             this.MenuPaste.Text = "toolStripButton1";
             // 
+            // groupBoxForTools
+            // 
+            this.groupBoxForTools.Controls.Add(this.RubberToolsBTN);
+            this.groupBoxForTools.Controls.Add(this.FillToolsBTN);
+            this.groupBoxForTools.Controls.Add(this.TextToolsBTN);
+            this.groupBoxForTools.Controls.Add(this.ElipseToolsBTN);
+            this.groupBoxForTools.Controls.Add(this.SquardToolsBTN);
+            this.groupBoxForTools.Controls.Add(this.LineToolsBTN);
+            this.groupBoxForTools.Location = new System.Drawing.Point(634, 69);
+            this.groupBoxForTools.Name = "groupBoxForTools";
+            this.groupBoxForTools.Size = new System.Drawing.Size(131, 79);
+            this.groupBoxForTools.TabIndex = 1;
+            this.groupBoxForTools.TabStop = false;
+            // 
+            // TextToolsBTN
+            // 
+            this.TextToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TextToolsBTN.BackgroundImage")));
+            this.TextToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.TextToolsBTN.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TextToolsBTN.Location = new System.Drawing.Point(0, 47);
+            this.TextToolsBTN.Name = "TextToolsBTN";
+            this.TextToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.TextToolsBTN.TabIndex = 0;
+            this.TextToolsBTN.UseVisualStyleBackColor = true;
+            this.TextToolsBTN.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // LineToolsBTN
+            // 
+            this.LineToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LineToolsBTN.BackgroundImage")));
+            this.LineToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.LineToolsBTN.Location = new System.Drawing.Point(38, 9);
+            this.LineToolsBTN.Name = "LineToolsBTN";
+            this.LineToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.LineToolsBTN.TabIndex = 1;
+            this.LineToolsBTN.UseVisualStyleBackColor = true;
+            this.LineToolsBTN.Click += new System.EventHandler(this.LineToolsBTN_Click);
+            // 
+            // SquardToolsBTN
+            // 
+            this.SquardToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SquardToolsBTN.BackgroundImage")));
+            this.SquardToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SquardToolsBTN.Location = new System.Drawing.Point(76, 9);
+            this.SquardToolsBTN.Name = "SquardToolsBTN";
+            this.SquardToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.SquardToolsBTN.TabIndex = 2;
+            this.SquardToolsBTN.UseVisualStyleBackColor = true;
+            // 
+            // ElipseToolsBTN
+            // 
+            this.ElipseToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ElipseToolsBTN.BackgroundImage")));
+            this.ElipseToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ElipseToolsBTN.Location = new System.Drawing.Point(0, 9);
+            this.ElipseToolsBTN.Name = "ElipseToolsBTN";
+            this.ElipseToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.ElipseToolsBTN.TabIndex = 3;
+            this.ElipseToolsBTN.UseVisualStyleBackColor = true;
+            // 
+            // FillToolsBTN
+            // 
+            this.FillToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FillToolsBTN.BackgroundImage")));
+            this.FillToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FillToolsBTN.Location = new System.Drawing.Point(38, 47);
+            this.FillToolsBTN.Name = "FillToolsBTN";
+            this.FillToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.FillToolsBTN.TabIndex = 4;
+            this.FillToolsBTN.UseVisualStyleBackColor = true;
+            // 
+            // RubberToolsBTN
+            // 
+            this.RubberToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RubberToolsBTN.BackgroundImage")));
+            this.RubberToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RubberToolsBTN.Location = new System.Drawing.Point(76, 47);
+            this.RubberToolsBTN.Name = "RubberToolsBTN";
+            this.RubberToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.RubberToolsBTN.TabIndex = 5;
+            this.RubberToolsBTN.UseVisualStyleBackColor = true;
+            // 
+            // ColorBox
+            // 
+            this.ColorBox.Controls.Add(this.ColorBTN8);
+            this.ColorBox.Controls.Add(this.ColorBTN4);
+            this.ColorBox.Controls.Add(this.ColorBTN7);
+            this.ColorBox.Controls.Add(this.ColorBTN3);
+            this.ColorBox.Controls.Add(this.ColorBTN6);
+            this.ColorBox.Controls.Add(this.ColorBTN2);
+            this.ColorBox.Controls.Add(this.ColorBTN5);
+            this.ColorBox.Controls.Add(this.ColorBTN1);
+            this.ColorBox.Controls.Add(this.button2);
+            this.ColorBox.Controls.Add(this.button1);
+            this.ColorBox.Location = new System.Drawing.Point(782, 12);
+            this.ColorBox.Name = "ColorBox";
+            this.ColorBox.Size = new System.Drawing.Size(223, 69);
+            this.ColorBox.TabIndex = 2;
+            this.ColorBox.TabStop = false;
+            this.ColorBox.Enter += new System.EventHandler(this.ColorBox_Enter);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Location = new System.Drawing.Point(7, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 32);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Lime;
+            this.button2.Location = new System.Drawing.Point(45, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(32, 32);
+            this.button2.TabIndex = 1;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // ColorBTN1
+            // 
+            this.ColorBTN1.BackColor = System.Drawing.Color.White;
+            this.ColorBTN1.Location = new System.Drawing.Point(92, 8);
+            this.ColorBTN1.Name = "ColorBTN1";
+            this.ColorBTN1.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN1.TabIndex = 2;
+            this.ColorBTN1.UseVisualStyleBackColor = false;
+            this.ColorBTN1.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // ColorBTN5
+            // 
+            this.ColorBTN5.BackColor = System.Drawing.Color.Black;
+            this.ColorBTN5.Location = new System.Drawing.Point(92, 38);
+            this.ColorBTN5.Name = "ColorBTN5";
+            this.ColorBTN5.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN5.TabIndex = 3;
+            this.ColorBTN5.UseVisualStyleBackColor = false;
+            // 
+            // ColorBTN2
+            // 
+            this.ColorBTN2.BackColor = System.Drawing.Color.Red;
+            this.ColorBTN2.Location = new System.Drawing.Point(123, 8);
+            this.ColorBTN2.Name = "ColorBTN2";
+            this.ColorBTN2.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN2.TabIndex = 4;
+            this.ColorBTN2.UseVisualStyleBackColor = false;
+            // 
+            // ColorBTN6
+            // 
+            this.ColorBTN6.BackColor = System.Drawing.Color.Fuchsia;
+            this.ColorBTN6.Location = new System.Drawing.Point(123, 38);
+            this.ColorBTN6.Name = "ColorBTN6";
+            this.ColorBTN6.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN6.TabIndex = 5;
+            this.ColorBTN6.UseVisualStyleBackColor = false;
+            // 
+            // ColorBTN3
+            // 
+            this.ColorBTN3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ColorBTN3.Location = new System.Drawing.Point(154, 8);
+            this.ColorBTN3.Name = "ColorBTN3";
+            this.ColorBTN3.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN3.TabIndex = 6;
+            this.ColorBTN3.UseVisualStyleBackColor = false;
+            // 
+            // ColorBTN7
+            // 
+            this.ColorBTN7.BackColor = System.Drawing.Color.Yellow;
+            this.ColorBTN7.Location = new System.Drawing.Point(154, 39);
+            this.ColorBTN7.Name = "ColorBTN7";
+            this.ColorBTN7.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN7.TabIndex = 7;
+            this.ColorBTN7.UseVisualStyleBackColor = false;
+            // 
+            // ColorBTN4
+            // 
+            this.ColorBTN4.BackColor = System.Drawing.Color.Blue;
+            this.ColorBTN4.Location = new System.Drawing.Point(185, 8);
+            this.ColorBTN4.Name = "ColorBTN4";
+            this.ColorBTN4.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN4.TabIndex = 8;
+            this.ColorBTN4.UseVisualStyleBackColor = false;
+            // 
+            // ColorBTN8
+            // 
+            this.ColorBTN8.BackColor = System.Drawing.Color.Aqua;
+            this.ColorBTN8.Location = new System.Drawing.Point(185, 39);
+            this.ColorBTN8.Name = "ColorBTN8";
+            this.ColorBTN8.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN8.TabIndex = 9;
+            this.ColorBTN8.UseVisualStyleBackColor = false;
+            // 
+            // ToolCommonBox
+            // 
+            this.ToolCommonBox.ColumnCount = 2;
+            this.ToolCommonBox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ToolCommonBox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ToolCommonBox.Location = new System.Drawing.Point(87, 174);
+            this.ToolCommonBox.Name = "ToolCommonBox";
+            this.ToolCommonBox.RowCount = 2;
+            this.ToolCommonBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ToolCommonBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ToolCommonBox.Size = new System.Drawing.Size(678, 357);
+            this.ToolCommonBox.TabIndex = 10;
+            this.ToolCommonBox.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1017, 612);
+            this.Controls.Add(this.ToolCommonBox);
+            this.Controls.Add(this.ColorBox);
+            this.Controls.Add(this.groupBoxForTools);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.groupBoxForTools.ResumeLayout(false);
+            this.ColorBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +398,25 @@
         private System.Windows.Forms.ToolStripButton MenuDo;
         private System.Windows.Forms.ToolStripButton MenuCopy;
         private System.Windows.Forms.ToolStripButton MenuPaste;
+        private System.Windows.Forms.GroupBox groupBoxForTools;
+        private System.Windows.Forms.Button TextToolsBTN;
+        private System.Windows.Forms.Button RubberToolsBTN;
+        private System.Windows.Forms.Button FillToolsBTN;
+        private System.Windows.Forms.Button ElipseToolsBTN;
+        private System.Windows.Forms.Button SquardToolsBTN;
+        private System.Windows.Forms.Button LineToolsBTN;
+        private System.Windows.Forms.GroupBox ColorBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ColorBTN1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ColorBTN8;
+        private System.Windows.Forms.Button ColorBTN4;
+        private System.Windows.Forms.Button ColorBTN7;
+        private System.Windows.Forms.Button ColorBTN3;
+        private System.Windows.Forms.Button ColorBTN6;
+        private System.Windows.Forms.Button ColorBTN2;
+        private System.Windows.Forms.Button ColorBTN5;
+        private System.Windows.Forms.TableLayoutPanel ToolCommonBox;
     }
 }
 
