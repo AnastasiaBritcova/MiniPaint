@@ -15,14 +15,32 @@ namespace MiniPaint
         public Form1()
         {
             InitializeComponent();
+            buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 5));
+            buffer.ChangeStack += Buffer_ChangeStack;
+       }
+
+        private void Buffer_ChangeStack(int stack_count, int current)
+        {
+            if (stack_count == 0)
+                MenuDo.Enabled = MenuUndo.Enabled = false;
+            else if (current == stack_count-1)
+            {
+                MenuUndo.Enabled = true;
+                MenuDo.Enabled = false;
+            }
+            else if (current==-1)
+            {
+                MenuDo.Enabled = true;
+                MenuUndo.Enabled = false;
+            }
+            else if (current < stack_count-1)
+                MenuDo.Enabled = MenuUndo.Enabled = true;
         }
 
         private void ButtonColors_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,6 +64,11 @@ namespace MiniPaint
 
         }
 
+        private void LineToolsBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ColorBTN1_Click(object sender, EventArgs e)
         {
             if (rightRBTN.Checked) {
@@ -58,12 +81,37 @@ namespace MiniPaint
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
-            Graphics gr = pictureBox1.CreateGraphics();
-            gr.DrawLine(pen, 20, 10, 300, 100);
+            buffer.MouseDown(sender, e);
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            buffer.MouseMove(sender, e);
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            buffer.MouseUp(sender, e);
+        }
+
+        private void MenuUndo_Click(object sender, EventArgs e)
+        {
+            buffer.UnDo();
+        }
+
+        private void MenuDo_Click(object sender, EventArgs e)
+        {
+            buffer.ReDo();
         }
     }
 }
 
+
+// это все пропадает из designer, возможно переместіть сюда
+
+//this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(buffer.MouseDown);
+//this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(buffer.MouseMove);
+//this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(buffer.MouseUp);
+//buffer = new Buffer(pictureBox1, new System.Drawing.Pen(leftChoiceBTN.BackColor, 5));
