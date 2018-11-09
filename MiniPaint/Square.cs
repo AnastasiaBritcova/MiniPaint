@@ -43,22 +43,22 @@ namespace MiniPaint
         private Rectangle CreateRect(Point start, Point end)
         {
             Point startPoint = new Point();
-            if (end.X > start.X && end.Y > start.Y)
+            if (end.X >= start.X && end.Y <= start.Y)
             {
                 startPoint.X = start.X;
                 startPoint.Y = end.Y;
                  
             }
-            else if (end.X < start.X && end.Y > start.Y)
+            else if (end.X <= start.X && end.Y <= start.Y)
             {
                 startPoint = end;
             }
-            else if (end.X < start.X && end.Y < start.Y)
+            else if (end.X <= start.X && end.Y >= start.Y)
             {
                 startPoint.X = end.X;
                 startPoint.Y = start.Y;
             }
-            else if (end.X > start.X && end.Y < start.Y)
+            else if (end.X >= start.X && end.Y >= start.Y)
             {
                 startPoint = start;
             }
