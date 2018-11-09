@@ -1,0 +1,9 @@
+diff a/MiniPaint/Form1.Designer.cs b/MiniPaint/Form1.Designer.cs	(rejected hunks)
+@@ -49,6 +49,7 @@
+             this.SquardToolsBTN = new System.Windows.Forms.Button();
+             this.LineToolsBTN = new System.Windows.Forms.Button();
+             this.ColorBox = new System.Windows.Forms.GroupBox();
++            this.leftRBTN = new System.Windows.Forms.RadioButton();
+             this.ButtonColors = new System.Windows.Forms.Button();
+             this.ColorBTN8 = new System.Windows.Forms.Button();
+             this.ColorBTN4 = new System.Windows.Forms.Button();

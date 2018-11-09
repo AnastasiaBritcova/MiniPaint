@@ -31,6 +31,7 @@ namespace MiniPaint
         
         public abstract void Draw_move(MouseEventArgs e);
         public abstract void Draw_end();
+        public abstract Step GetNewObj();
         
     }
 }

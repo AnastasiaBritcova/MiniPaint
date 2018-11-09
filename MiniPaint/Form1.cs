@@ -66,7 +66,8 @@ namespace MiniPaint
 
         private void LineToolsBTN_Click(object sender, EventArgs e)
         {
-
+            FlagText = false;
+            buffer.Selected_step_init(new Line()); /////////// спросить, норм ли это
         }
 
         private void ColorBTN1_Click(object sender, EventArgs e)
@@ -83,17 +84,20 @@ namespace MiniPaint
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            buffer.MouseDown(sender, e);
+            if (!FlagText)
+                buffer.MouseDown(sender, e);
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            buffer.MouseMove(sender, e);
+            if (!FlagText)
+                buffer.MouseMove(sender, e);
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            buffer.MouseUp(sender, e);
+            if (!FlagText)
+                buffer.MouseUp(sender, e);
         }
 
         private void MenuUndo_Click(object sender, EventArgs e)
@@ -105,13 +109,57 @@ namespace MiniPaint
         {
             buffer.ReDo();
         }
+
+        private void ElipseToolsBTN_Click(object sender, EventArgs e)
+        {
+            FlagText = false;
+        }
+
+        private void SquardToolsBTN_Click(object sender, EventArgs e)
+        {
+            FlagText = false;
+            buffer.Selected_step_init(new Square());
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (FlagText && flagTextEndEnter == false)
+            {
+                buffer.MouseDown(sender, e); // возможно сделать отдельный метод (или переименовать это)
+
+                pictureBox1.Controls.Add(textb);
+                textb.Location = e.Location;
+                textb.Size = new Size(100, 100); // должен задаваться в зависимости от выбранного шрифта
+                textb.Visible = true;
+                textb.Multiline = true;
+                textb.BorderStyle = BorderStyle.None;
+                
+                
+                textb.ScrollBars = ScrollBars.Vertical;
+                textb.Focus();
+                flagTextEndEnter = true;
+            }
+
+            else if (FlagText && flagTextEndEnter)
+            {
+                buffer.MouseUp(sender, e);
+                textb.Hide();
+                textb.Text = "";
+                flagTextEndEnter = false;
+            }
+            
+
+        }
+
+        private void TextToolsBTN_Click(object sender, EventArgs e)
+        {
+            FlagText = true;
+            buffer.Selected_step_init(new TextElement());
+        }
+
+
+        bool FlagText = false;
+        bool flagTextEndEnter = false;
+        TextBox textb = new TextBox();
     }
 }
-
-
-// это все пропадает из designer, возможно переместіть сюда
-
-//this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(buffer.MouseDown);
-//this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(buffer.MouseMove);
-//this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(buffer.MouseUp);
-//buffer = new Buffer(pictureBox1, new System.Drawing.Pen(leftChoiceBTN.BackColor, 5));

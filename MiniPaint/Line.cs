@@ -31,7 +31,11 @@ namespace MiniPaint
 
                 gr.Dispose();
             }
-       
+        }
+
+        public override Step GetNewObj()
+        {
+            return new Line();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace MiniPaint
         public event ChangeStackHandler ChangeStack;
 
         List<Step> steps;
+
         int index_current_state;
         Pen pen; // color font here
         Color color_back;
@@ -27,6 +28,8 @@ namespace MiniPaint
             steps = new List<Step>();
             index_current_state = -1;
             pen = _pen;
+
+            // здесь стандартный инструмент 
             selected_step = new Line();
             pbx = _pbx;
         }
@@ -41,7 +44,7 @@ namespace MiniPaint
                 if (ChangeStack != null)
                     ChangeStack(steps.Count, index_current_state);
 
-                selected_step = new Line();
+                selected_step = selected_step.GetNewObj();
             }
         }
 
@@ -89,6 +92,11 @@ namespace MiniPaint
                 if (ChangeStack != null)
                     ChangeStack(steps.Count, index_current_state);
             }
+        }
+
+        public void GetString()
+        {
+
         }
     }
 }
