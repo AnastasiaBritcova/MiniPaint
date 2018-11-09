@@ -299,7 +299,7 @@ namespace MiniPaint
             // 
             this.leftRBTN.AutoSize = true;
             this.leftRBTN.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.leftRBTN.Location = new System.Drawing.Point(15, 46);
+            this.leftRBTN.Location = new System.Drawing.Point(15, 45);
             this.leftRBTN.Name = "leftRBTN";
             this.leftRBTN.Size = new System.Drawing.Size(14, 13);
             this.leftRBTN.TabIndex = 11;
@@ -401,6 +401,7 @@ namespace MiniPaint
             // RightChoiceBTN
             // 
             this.RightChoiceBTN.BackColor = System.Drawing.Color.White;
+            this.RightChoiceBTN.ForeColor = System.Drawing.Color.Coral;
             this.RightChoiceBTN.Location = new System.Drawing.Point(44, 8);
             this.RightChoiceBTN.Name = "RightChoiceBTN";
             this.RightChoiceBTN.Size = new System.Drawing.Size(32, 32);

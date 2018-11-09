@@ -50,6 +50,7 @@ namespace MiniPaint
         {
             if (colorDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
+            ChangeColour(colorDialog1.Color);
 
         }
 
