@@ -43,7 +43,7 @@ namespace MiniPaint
                 return;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // это фон над выбранным цветом
         {
             Graphics gr = ColorBox.CreateGraphics();
             Point loc_temp = ((Button)sender).Location;
@@ -113,6 +113,7 @@ namespace MiniPaint
         private void ElipseToolsBTN_Click(object sender, EventArgs e)
         {
             FlagText = false;
+            buffer.Selected_step_init(new Elipse());
         }
 
         private void SquardToolsBTN_Click(object sender, EventArgs e)
@@ -142,8 +143,9 @@ namespace MiniPaint
 
             else if (FlagText && flagTextEndEnter)
             {
-                buffer.MouseUp(sender, e);
                 textb.Hide();
+                buffer.MouseUp(sender, e);
+                
                 textb.Text = "";
                 flagTextEndEnter = false;
             }
