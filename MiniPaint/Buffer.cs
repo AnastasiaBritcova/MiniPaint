@@ -18,7 +18,7 @@ namespace MiniPaint
 
         int index_current_state;
         Pen pen; // color font here
-        Color color_back;
+        Color color_back; //цвет ластика
         Font font;
         Step selected_step;
         PictureBox pbx;
@@ -97,6 +97,14 @@ namespace MiniPaint
         public void GetString()
         {
 
+        }
+        public void ChangeFontColour(Color col) {
+            pen.Color = col;
+        }
+
+        public void ChangeBackColour(Color col)
+        {
+            color_back = col;
         }
     }
 }
