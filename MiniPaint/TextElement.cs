@@ -19,20 +19,14 @@ namespace MiniPaint
 
             if (textb!=null)
             {
-                TextRenderer.DrawText(grImg, textb.Text, textb.Font, textb.Location, Color.Black);
-               // TextRenderer.DrawText(gr, textb.Text, textb.Font, textb.Location, Color.Black);
-               // grImg.DrawString(textb.Text, textb.Font, Brushes.Black, pbx.Location);
-                pbx.DrawToBitmap(bmp, pbx.DisplayRectangle);
+                gr.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
+                TextRenderer.DrawText(gr, textb.Text, textb.Font, textb.Location, pen.Color);
 
+               //TextRenderer.DrawText(gr, textb.Text, textb.Font, textb.Location, Color.Black);
+                //grImg.DrawString(textb.Text, textb.Font, Brushes.Black, textb.Location);
 
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.DefaultExt = "bmp";
-                sfd.Filter = "Image files (*.bmp)|*.bmp|All files (*.*)|*.*";
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    bmp.Save(sfd.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
-                }
+                //pbx.DrawToBitmap(bmp, pbx.DisplayRectangle);
             }
 
 
