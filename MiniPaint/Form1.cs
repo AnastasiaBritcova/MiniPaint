@@ -78,7 +78,7 @@ namespace MiniPaint
         private void LineToolsBTN_Click(object sender, EventArgs e)
         {
             if (flagTextEndEnter)
-                buffer.MouseUp(sender, (MouseEventArgs)e); // проверить, как это работает
+                buffer.MouseUp((MouseEventArgs)e); // проверить, как это работает
             clickFigure();
             buffer.Selected_step_init(new Line()); /////// спросить, норм ли это
         }
@@ -91,19 +91,19 @@ namespace MiniPaint
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (!FlagText)
-                buffer.MouseDown(sender, e);
+                buffer.MouseDown(e);
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (!FlagText)
-                buffer.MouseMove(sender, e);
+                buffer.MouseMove(e);
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             if (!FlagText)
-                buffer.MouseUp(sender, e);
+                buffer.MouseUp(e);
         }
 
         private void MenuUndo_Click(object sender, EventArgs e)
@@ -119,7 +119,7 @@ namespace MiniPaint
         private void ElipseToolsBTN_Click(object sender, EventArgs e)
         {
             if (flagTextEndEnter)
-                buffer.MouseUp(sender, (MouseEventArgs)e); // проверить, как это работает
+                buffer.MouseUp((MouseEventArgs)e); // проверить, как это работает
 
             clickFigure();
             buffer.Selected_step_init(new Elipse());
@@ -128,7 +128,7 @@ namespace MiniPaint
         private void SquardToolsBTN_Click(object sender, EventArgs e)
         {
             if (flagTextEndEnter)
-                buffer.MouseUp(sender, (MouseEventArgs)e); // проверить, как это работает
+                buffer.MouseUp((MouseEventArgs)e); // проверить, как это работает
             clickFigure();
             buffer.Selected_step_init(new Square());
         }
@@ -137,15 +137,14 @@ namespace MiniPaint
         {
             if (FlagText && flagTextEndEnter == false)
             {
-                buffer.MouseDown(sender, e); // возможно сделать отдельный метод (или переименовать это)
+                buffer.MouseDown(e); // возможно сделать отдельный метод (или переименовать это)
 
                 textb.Location = e.Location;
                 textb.Size = new Size(100, 100); // должен задаваться в зависимости от выбранного шрифта
                 textb.Visible = true;
                 textb.Multiline = true;
                 textb.BorderStyle = BorderStyle.None;
-                
-                
+
                 textb.ScrollBars = ScrollBars.Vertical;
                 textb.Focus();
                 flagTextEndEnter = true;
@@ -153,18 +152,29 @@ namespace MiniPaint
 
             else if (FlagText && flagTextEndEnter)
             {
-                textb.Hide();
-                buffer.MouseUp(sender, e);
+                textb.Visible = false;
+                buffer.MouseUp(e);
                 ClearTextBox();   
             }
-            
-
         }
 
         private void TextToolsBTN_Click(object sender, EventArgs e)
         {
+            textb.Visible = false;
+            if (flagTextEndEnter)
+                buffer.MouseUp((MouseEventArgs)e);
+
+            clickFigure();
             FlagText = true;
             buffer.Selected_step_init(new TextElement());
+        }
+
+        private void RubberToolsBTN_Click(object sender, EventArgs e)
+        {
+            if (flagTextEndEnter)
+                buffer.MouseUp((MouseEventArgs)e); // проверить, как это работает
+            clickFigure();
+            buffer.Selected_step_init(new Rubber());
         }
 
         private void ClearTextBox()
@@ -191,7 +201,8 @@ namespace MiniPaint
             ChangeColour(Color.Green);
         }
 
-        private void ChangeColour(Color col) {
+        private void ChangeColour(Color col)
+        {
             if (rightRBTN.Checked)
             {
                 RightChoiceBTN.BackColor = col;
@@ -228,11 +239,6 @@ namespace MiniPaint
         private void ColorBTN8_Click(object sender, EventArgs e)
         {
             ChangeColour(Color.Aqua);
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

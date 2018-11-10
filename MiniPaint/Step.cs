@@ -20,7 +20,7 @@ namespace MiniPaint
         public Bitmap GetBitmap()
         { return bmp; }
 
-        public void set_start(Point st, PictureBox _pbx, Pen _pen) // maybe abstract
+        public virtual void set_start(Point st, PictureBox _pbx, Pen _pen) // maybe abstract
         {
             start = st;
             pbx = _pbx;

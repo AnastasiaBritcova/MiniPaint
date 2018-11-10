@@ -207,6 +207,7 @@ namespace MiniPaint
             this.RubberToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.RubberToolsBTN.TabIndex = 5;
             this.RubberToolsBTN.UseVisualStyleBackColor = true;
+            this.RubberToolsBTN.Click += new System.EventHandler(this.RubberToolsBTN_Click);
             // 
             // FillToolsBTN
             // 
@@ -444,7 +445,6 @@ namespace MiniPaint
             this.Controls.Add(this.toolStripMenu);
             this.Name = "Form1";
             this.Text = "Mini paint";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             this.groupBoxForTools.ResumeLayout(false);

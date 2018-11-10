@@ -34,7 +34,7 @@ namespace MiniPaint
             pbx = _pbx;
         }
 
-        public void MouseUp(object sender, MouseEventArgs e) // оставила здесь сигнатуру обработчика событий если будем переделывать
+        public void MouseUp(MouseEventArgs e) 
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -48,13 +48,13 @@ namespace MiniPaint
             }
         }
 
-       public void MouseDown(object sender, MouseEventArgs e)
+       public void MouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
                 selected_step.set_start(e.Location, pbx, pen);
         }
 
-        public void MouseMove(object sender, MouseEventArgs e)
+        public void MouseMove(MouseEventArgs e)
         {
                 if (e.Button == MouseButtons.Left)
                     selected_step.Draw_move(e);
