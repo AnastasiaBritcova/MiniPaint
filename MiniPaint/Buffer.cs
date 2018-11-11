@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace MiniPaint
 {
-
     class Buffer
     {
         public delegate void ChangeStackHandler(int stack_count, int current);
@@ -18,8 +17,8 @@ namespace MiniPaint
 
         int index_current_state;
         Pen pen; // color font here
-        Color color_back; //цвет ластика
-        Font font;
+        Color colorBack; //цвет ластика
+        Font font; // возможно не понадобится, если хранить шрифт в текст боксе
         Step selected_step;
         PictureBox pbx;
 
@@ -51,7 +50,7 @@ namespace MiniPaint
        public void MouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                selected_step.set_start(e.Location, pbx, pen);
+                selected_step.set_start(e.Location, pbx, pen, colorBack);
         }
 
         public void MouseMove(MouseEventArgs e)
@@ -104,7 +103,7 @@ namespace MiniPaint
 
         public void ChangeBackColour(Color col)
         {
-            color_back = col;
+            colorBack = col;
         }
     }
 }

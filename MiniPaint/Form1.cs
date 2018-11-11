@@ -56,12 +56,12 @@ namespace MiniPaint
 
         private void button1_Click(object sender, EventArgs e) // это фон над выбранным цветом
         {
-            Graphics gr = ColorBox.CreateGraphics();
-            Point loc_temp = ((Button)sender).Location;
-            loc_temp.X -= 2;
-            loc_temp.Y -= 2;
+            //Graphics gr = ColorBox.CreateGraphics();
+            //Point loc_temp = ((Button)sender).Location;
+            //loc_temp.X -= 2;
+            //loc_temp.Y -= 2;
 
-            gr.FillRectangle(Brushes.Aqua, new Rectangle(loc_temp.X, loc_temp.Y, 36, 36));
+            //gr.FillRectangle(Brushes.Aqua, new Rectangle(loc_temp.X, loc_temp.Y, 36, 36));
 
         }
 
@@ -190,7 +190,6 @@ namespace MiniPaint
         }
 
       
-
         private void ColorBTN2_Click(object sender, EventArgs e)
         {
             ChangeColour(Color.Red);

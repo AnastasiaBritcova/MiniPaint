@@ -11,22 +11,25 @@ namespace MiniPaint
     abstract class Step
     {
         protected Pen pen;
+        protected Color colorBack;
         protected Point start;
         protected Point end;
         protected Bitmap bmp;
+    
         protected PictureBox pbx;
         protected bool flag_draw;
 
         public Bitmap GetBitmap()
         { return bmp; }
 
-        public virtual void set_start(Point st, PictureBox _pbx, Pen _pen) // maybe abstract
+        public virtual void set_start(Point st, PictureBox _pbx, Pen _pen, Color color) // maybe abstract
         {
             start = st;
             pbx = _pbx;
             pen = _pen;
             bmp = new Bitmap(pbx.Image, pbx.Width, pbx.Height);
             pbx.Image = bmp;
+            colorBack = color;
         }
         
         public abstract void Draw_move(MouseEventArgs e);
