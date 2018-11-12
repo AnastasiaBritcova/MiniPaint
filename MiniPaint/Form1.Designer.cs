@@ -71,12 +71,18 @@ namespace MiniPaint
             this.Line3BTN = new System.Windows.Forms.Button();
             this.Line4BTN = new System.Windows.Forms.Button();
             this.LineBox = new System.Windows.Forms.GroupBox();
+            this.RubberOptionBox = new System.Windows.Forms.GroupBox();
+            this.RubberPictureBox = new System.Windows.Forms.PictureBox();
+            this.RubberPlusBTN = new System.Windows.Forms.Button();
+            this.RubberMinusBTN = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.toolStripMenu.SuspendLayout();
             this.groupBoxForTools.SuspendLayout();
             this.ColorBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.LineBox.SuspendLayout();
+            this.RubberOptionBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RubberPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripMenu
@@ -461,7 +467,7 @@ namespace MiniPaint
             this.Line2BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line2BTN.BackgroundImage")));
             this.Line2BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Line2BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Line2BTN.Location = new System.Drawing.Point(0, 28);
+            this.Line2BTN.Location = new System.Drawing.Point(0, 32);
             this.Line2BTN.Name = "Line2BTN";
             this.Line2BTN.Size = new System.Drawing.Size(164, 27);
             this.Line2BTN.TabIndex = 1;
@@ -474,7 +480,7 @@ namespace MiniPaint
             this.Line3BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line3BTN.BackgroundImage")));
             this.Line3BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Line3BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Line3BTN.Location = new System.Drawing.Point(0, 53);
+            this.Line3BTN.Location = new System.Drawing.Point(0, 56);
             this.Line3BTN.Name = "Line3BTN";
             this.Line3BTN.Size = new System.Drawing.Size(164, 27);
             this.Line3BTN.TabIndex = 2;
@@ -487,7 +493,7 @@ namespace MiniPaint
             this.Line4BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line4BTN.BackgroundImage")));
             this.Line4BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Line4BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Line4BTN.Location = new System.Drawing.Point(0, 76);
+            this.Line4BTN.Location = new System.Drawing.Point(0, 82);
             this.Line4BTN.Name = "Line4BTN";
             this.Line4BTN.Size = new System.Drawing.Size(164, 27);
             this.Line4BTN.TabIndex = 3;
@@ -500,12 +506,57 @@ namespace MiniPaint
             this.LineBox.Controls.Add(this.Line3BTN);
             this.LineBox.Controls.Add(this.Line2BTN);
             this.LineBox.Controls.Add(this.Line1BTN);
-            this.LineBox.Location = new System.Drawing.Point(318, 12);
+            this.LineBox.Location = new System.Drawing.Point(294, 12);
             this.LineBox.Name = "LineBox";
-            this.LineBox.Size = new System.Drawing.Size(164, 109);
+            this.LineBox.Size = new System.Drawing.Size(188, 109);
             this.LineBox.TabIndex = 4;
             this.LineBox.TabStop = false;
+            this.LineBox.Visible = false;
             this.LineBox.Enter += new System.EventHandler(this.LineBox_Enter);
+            // 
+            // RubberOptionBox
+            // 
+            this.RubberOptionBox.Controls.Add(this.RubberPictureBox);
+            this.RubberOptionBox.Controls.Add(this.RubberPlusBTN);
+            this.RubberOptionBox.Controls.Add(this.RubberMinusBTN);
+            this.RubberOptionBox.Location = new System.Drawing.Point(45, 27);
+            this.RubberOptionBox.Name = "RubberOptionBox";
+            this.RubberOptionBox.Size = new System.Drawing.Size(221, 115);
+            this.RubberOptionBox.TabIndex = 4;
+            this.RubberOptionBox.TabStop = false;
+            this.RubberOptionBox.Visible = false;
+            this.RubberOptionBox.Enter += new System.EventHandler(this.RubberOptionBox_Enter);
+            // 
+            // RubberPictureBox
+            // 
+            this.RubberPictureBox.Location = new System.Drawing.Point(66, 15);
+            this.RubberPictureBox.Name = "RubberPictureBox";
+            this.RubberPictureBox.Size = new System.Drawing.Size(90, 88);
+            this.RubberPictureBox.TabIndex = 5;
+            this.RubberPictureBox.TabStop = false;
+            this.RubberPictureBox.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // RubberPlusBTN
+            // 
+            this.RubberPlusBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RubberPlusBTN.BackgroundImage")));
+            this.RubberPlusBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RubberPlusBTN.Location = new System.Drawing.Point(175, 35);
+            this.RubberPlusBTN.Name = "RubberPlusBTN";
+            this.RubberPlusBTN.Size = new System.Drawing.Size(40, 40);
+            this.RubberPlusBTN.TabIndex = 1;
+            this.RubberPlusBTN.UseVisualStyleBackColor = true;
+            this.RubberPlusBTN.Click += new System.EventHandler(this.RubberPlusBTN_Click);
+            // 
+            // RubberMinusBTN
+            // 
+            this.RubberMinusBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RubberMinusBTN.BackgroundImage")));
+            this.RubberMinusBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RubberMinusBTN.Location = new System.Drawing.Point(6, 35);
+            this.RubberMinusBTN.Name = "RubberMinusBTN";
+            this.RubberMinusBTN.Size = new System.Drawing.Size(40, 40);
+            this.RubberMinusBTN.TabIndex = 0;
+            this.RubberMinusBTN.UseVisualStyleBackColor = true;
+            this.RubberMinusBTN.Click += new System.EventHandler(this.RubberMinusBTN_Click);
             // 
             // Form1
             // 
@@ -519,8 +570,10 @@ namespace MiniPaint
             this.Controls.Add(this.ColorBox);
             this.Controls.Add(this.groupBoxForTools);
             this.Controls.Add(this.toolStripMenu);
+            this.Controls.Add(this.RubberOptionBox);
             this.Name = "Form1";
             this.Text = "Mini paint";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             this.groupBoxForTools.ResumeLayout(false);
@@ -528,6 +581,8 @@ namespace MiniPaint
             this.ColorBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.LineBox.ResumeLayout(false);
+            this.RubberOptionBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RubberPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,6 +631,10 @@ namespace MiniPaint
         private System.Windows.Forms.Button Line4BTN;
         private System.Windows.Forms.GroupBox LineBox;
         private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.GroupBox RubberOptionBox;
+        private System.Windows.Forms.PictureBox RubberPictureBox;
+        private System.Windows.Forms.Button RubberPlusBTN;
+        private System.Windows.Forms.Button RubberMinusBTN;
     }
 }
 

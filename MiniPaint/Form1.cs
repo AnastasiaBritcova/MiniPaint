@@ -12,12 +12,12 @@ namespace MiniPaint
 {
     public partial class Form1 : Form
     {
-        bool FlagText = false;
         bool flagTextEndEnter = false;
-        bool FlagFill = false;
-        TextBox textb; 
-        
+        TextBox textb;
+        enum Tools
+        {line=1,elipse,square,text,fill,rubber };
 
+        Tools tools = Tools.line;
 
         public Form1()
         {
@@ -63,7 +63,8 @@ namespace MiniPaint
             if (flagTextEndEnter)
                 buffer.MouseUp((MouseEventArgs)e); // проверить, как это работает
             clickFigure();
-            buffer.Selected_step_init(new Line()); /////// спросить, норм ли это
+            buffer.Selected_step_init(new Line());
+            tools = Tools.line;
         }
 
         private void ColorBTN1_Click(object sender, EventArgs e)
@@ -73,19 +74,19 @@ namespace MiniPaint
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!FlagText && !FlagFill)
+            if (tools!=Tools.text && tools != Tools.fill)
                 buffer.MouseDown(e);
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!FlagText && !FlagFill)
+            if (tools != Tools.text && tools != Tools.fill)
                 buffer.MouseMove(e);
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!FlagText && !FlagFill)
+            if (tools != Tools.text && tools != Tools.fill)
                 buffer.MouseUp(e);
         }
 
@@ -106,6 +107,7 @@ namespace MiniPaint
 
             clickFigure();
             buffer.Selected_step_init(new Elipse());
+            tools = Tools.elipse;
         }
 
         private void SquardToolsBTN_Click(object sender, EventArgs e)
@@ -114,11 +116,12 @@ namespace MiniPaint
                 buffer.MouseUp((MouseEventArgs)e); // проверить, как это работает
             clickFigure();
             buffer.Selected_step_init(new Square());
+            tools = Tools.square;
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (FlagText && flagTextEndEnter == false)
+            if (tools == Tools.text && flagTextEndEnter == false)
             {
                 buffer.MouseDown(e); // возможно сделать отдельный метод (или переименовать это)
 
@@ -133,7 +136,7 @@ namespace MiniPaint
                 flagTextEndEnter = true;
             }
 
-            else if (FlagText && flagTextEndEnter)
+            else if (tools == Tools.text && flagTextEndEnter)
             {
                 textb.Visible = false;
                 buffer.MouseUp(e);
@@ -148,10 +151,9 @@ namespace MiniPaint
                 buffer.MouseUp((MouseEventArgs)e);
 
             clickFigure();
-            FlagText = true;
+            LineBox.Hide();
             buffer.Selected_step_init(new TextElement());
-            fontDialog1.ShowDialog();
-            textb.Font = fontDialog1.Font;
+            tools = Tools.text;
         }
 
         private void RubberToolsBTN_Click(object sender, EventArgs e)
@@ -159,7 +161,10 @@ namespace MiniPaint
             if (flagTextEndEnter)
                 buffer.MouseUp((MouseEventArgs)e); // проверить, как это работает
             clickFigure();
+            WidthLineBTN.Enabled = true;
             buffer.Selected_step_init(new Rubber());
+            tools = Tools.rubber;
+
         }
 
         private void ClearTextBox()
@@ -169,9 +174,8 @@ namespace MiniPaint
         }
         private void clickFigure()
         {
-            FlagText = false;
             textb.Visible = false;
-            FlagFill = false;
+            WidthLineBTN.Enabled = true;
             ClearTextBox();
         }
 
@@ -267,19 +271,62 @@ namespace MiniPaint
 
         private void FillToolsBTN_Click(object sender, EventArgs e)
         {
-            FlagFill = true;
+            WidthLineBTN.Enabled = false;
             buffer.Selected_step_init(new Fill());
+            tools = Tools.fill;
+            LineBox.Hide();
         }
 
         private void clickPictureBox(object sender, EventArgs e)
         {
-            if (FlagFill)
+            if (tools == Tools.fill)
                 buffer.MouseDown((MouseEventArgs)e);
         }
 
         private void WidthLineBTN_Click(object sender, EventArgs e)
         {
-            
+            if (tools == Tools.text)
+            {
+                RubberOptionBox.Hide();
+                LineBox.Hide();
+                fontDialog1.ShowDialog();
+                textb.Font = fontDialog1.Font;
+            }
+            else if (tools == Tools.line || tools == Tools.elipse || tools == Tools.square)
+            {
+                RubberOptionBox.Hide();
+                LineBox.Show();
+            }
+            else if (tools == Tools.rubber) {
+                LineBox.Hide();
+                RubberOptionBox.Show();
+            }
+            //else if (tools == Tools.)
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RubberOptionBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RubberPlusBTN_Click(object sender, EventArgs e)
+        {
+           // buffer.ChangePenWigth();
+        }
+
+        private void RubberMinusBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
