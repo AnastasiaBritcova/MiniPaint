@@ -14,6 +14,7 @@ namespace MiniPaint
     {
         bool FlagText = false;
         bool flagTextEndEnter = false;
+        bool FlagFill = false;
         TextBox textb; 
 
         public Form1()
@@ -69,19 +70,19 @@ namespace MiniPaint
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!FlagText)
+            if (!FlagText && !FlagFill)
                 buffer.MouseDown(e);
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!FlagText)
+            if (!FlagText && !FlagFill)
                 buffer.MouseMove(e);
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!FlagText)
+            if (!FlagText && !FlagFill)
                 buffer.MouseUp(e);
         }
 
@@ -165,6 +166,7 @@ namespace MiniPaint
         {
             FlagText = false;
             textb.Visible = false;
+            FlagFill = false;
             ClearTextBox();
         }
 
@@ -256,6 +258,18 @@ namespace MiniPaint
         {
             ChangeLineBackColor(sender as Button);
             buffer.ChangePenWigth(6);
+        }
+
+        private void FillToolsBTN_Click(object sender, EventArgs e)
+        {
+            FlagFill = true;
+            buffer.Selected_step_init(new Fill());
+        }
+
+        private void clickPictureBox(object sender, EventArgs e)
+        {
+            if (FlagFill)
+                buffer.MouseDown((MouseEventArgs)e);
         }
     }
 }

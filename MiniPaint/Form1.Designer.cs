@@ -225,6 +225,7 @@ namespace MiniPaint
             this.FillToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.FillToolsBTN.TabIndex = 4;
             this.FillToolsBTN.UseVisualStyleBackColor = true;
+            this.FillToolsBTN.Click += new System.EventHandler(this.FillToolsBTN_Click);
             // 
             // TextToolsBTN
             // 
@@ -433,6 +434,7 @@ namespace MiniPaint
             this.pictureBox1.Size = new System.Drawing.Size(848, 473);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.clickPictureBox);
             this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
