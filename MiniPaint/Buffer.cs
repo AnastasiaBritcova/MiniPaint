@@ -93,11 +93,6 @@ namespace MiniPaint
                     ChangeStack(steps.Count, index_current_state);
             }
         }
-
-        public void GetString()
-        {
-
-        }
         public void ChangePenColour(Color col)
         {
             pen.Color = col;

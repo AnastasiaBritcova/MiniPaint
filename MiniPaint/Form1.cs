@@ -149,6 +149,8 @@ namespace MiniPaint
             clickFigure();
             FlagText = true;
             buffer.Selected_step_init(new TextElement());
+            fontDialog1.ShowDialog();
+            textb.Font = fontDialog1.Font;
         }
 
         private void RubberToolsBTN_Click(object sender, EventArgs e)
