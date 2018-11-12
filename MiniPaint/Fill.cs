@@ -23,7 +23,9 @@ namespace MiniPaint
         public override void set_start(Point st, PictureBox _pbx, Pen _pen, Color color)
         {           
             base.set_start(st, _pbx, _pen, color);
-             Recursion(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
+            
+            FillNoRec(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
+             //Recursion(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
             //FillRecursion(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
         }
 
@@ -57,31 +59,77 @@ namespace MiniPaint
             return;
         }
 
+
+
+
+
+
+
+
+
+
+
         private void Recursion(int x, int y, Color begin, Color newCol)
         {
-            List <Point> listik = new List<Point>();
-            List<Point> listik_2 = new List<Point>();
-            listik.Add(new Point(x, y));
-
-            while (listik.Count > 0)
+            if (x >= 0 && y >= 0 && y <= pbx.Height && x <= pbx.Width && bmp.GetPixel(x, y)==begin&& bmp.GetPixel(x, y) !=newCol)           
             {
-                x = listik[0].X;
-                y = listik[0].Y;
-                if (x > 0 && y > 0 && x< pbx.Height && y< pbx.Width && bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
-                {
-                    bmp.SetPixel(x, y, newCol);                    
-                    if(!listik.Contains(new Point(x - 1, y))&& !listik_2.Contains(new Point(x - 1, y)))
-                    listik.Add(new Point(x - 1, y));
-                    if (!listik.Contains(new Point(x + 1, y)) && !listik_2.Contains(new Point(x + 1, y)))
-                        listik.Add(new Point(x+1, y));
-                    if (!listik.Contains(new Point(x, y-1)) && !listik_2.Contains(new Point(x, y-1)))
-                        listik.Add(new Point(x, y-1));
-                    if (!listik.Contains(new Point(x, y+1)) && !listik_2.Contains(new Point(x, y+1)))
-                        listik.Add(new Point(x, y+1));
-                }
-                listik_2.Add(new Point(x, y));
-                listik.RemoveAt(0);
-                //listik.Remove(new Point (x,y));
+                    bmp.SetPixel(x, y, newCol);
+                    Recursion(x - 1, y, begin, newCol);
+                   Recursion(x + 1, y, begin, newCol);
+                   Recursion(x, y - 1, begin, newCol);
+                   Recursion(x, y + 1, begin, newCol);
+            }
+        }
+
+        private void FillNoRec(int x, int y, Color begin, Color newCol)
+        {
+            Point start = new Point(x,y);
+            FillYUp(x, y, begin, newCol);
+            FillYDown(x, y+1, begin, newCol);
+
+            x = start.X-1;
+            y = start.Y;
+            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
+                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
+            {
+                bmp.SetPixel(x, y, newCol);
+                FillYUp(x, y-1, begin, newCol);
+                FillYDown(x, y+1, begin, newCol);
+
+                x -= 1;
+            }
+
+            x = start.X+1;
+            y = start.Y;
+            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
+                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
+            {
+                bmp.SetPixel(x, y, newCol);
+                FillYUp(x, y - 1, begin, newCol);
+                FillYDown(x, y + 1, begin, newCol);
+                x += 1;
+            }
+
+
+        }
+
+        private void FillYUp(int x, int y, Color begin, Color newCol)
+        {
+            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
+                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
+            {
+                bmp.SetPixel(x, y, newCol);
+                y -= 1;
+            }            
+        }
+        
+        private void FillYDown(int x, int y, Color begin, Color newCol)
+        {
+            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
+                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
+            {
+                bmp.SetPixel(x, y, newCol);
+                y += 1;
             }
         }
     }

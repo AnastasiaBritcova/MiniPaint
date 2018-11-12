@@ -71,6 +71,7 @@ namespace MiniPaint
             this.Line3BTN = new System.Windows.Forms.Button();
             this.Line4BTN = new System.Windows.Forms.Button();
             this.LineBox = new System.Windows.Forms.GroupBox();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.toolStripMenu.SuspendLayout();
             this.groupBoxForTools.SuspendLayout();
             this.ColorBox.SuspendLayout();
@@ -573,6 +574,7 @@ namespace MiniPaint
         private System.Windows.Forms.Button Line3BTN;
         private System.Windows.Forms.Button Line4BTN;
         private System.Windows.Forms.GroupBox LineBox;
+        private System.Windows.Forms.FontDialog fontDialog1;
     }
 }
 
