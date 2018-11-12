@@ -98,8 +98,14 @@ namespace MiniPaint
         {
 
         }
-        public void ChangeFontColour(Color col) {
+        public void ChangePenColour(Color col)
+        {
             pen.Color = col;
+            
+        }
+        public void ChangePenWigth(float wigth)
+        {
+            pen.Width = wigth;
         }
 
         public void ChangeBackColour(Color col)

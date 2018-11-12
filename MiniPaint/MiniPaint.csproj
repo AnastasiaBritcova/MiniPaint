@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Buffer.cs" />
     <Compile Include="Elipse.cs" />
+    <Compile Include="Fill.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

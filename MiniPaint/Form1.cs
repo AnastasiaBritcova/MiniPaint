@@ -19,7 +19,7 @@ namespace MiniPaint
         public Form1()
         {
             InitializeComponent();
-            buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 5), RightChoiceBTN.BackColor);
+            buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 1.5f), RightChoiceBTN.BackColor);
             buffer.ChangeStack += Buffer_ChangeStack;
             textb = new TextBox();
             textb.BackColor = SystemColors.Control; 
@@ -190,7 +190,7 @@ namespace MiniPaint
             if (leftRBTN.Checked)
             {
                 leftChoiceBTN.BackColor = col;
-                buffer.ChangeFontColour(col);
+                buffer.ChangePenColour(col);
             }
         }
 
@@ -227,6 +227,8 @@ namespace MiniPaint
         private void Line1BTN_Click(object sender, EventArgs e)
         {
             ChangeLineBackColor(sender as Button);
+            buffer.ChangePenWigth(1.5f);
+
         }
         private void ChangeLineBackColor(Button butt)
         {
@@ -241,16 +243,19 @@ namespace MiniPaint
         private void Line2BTN_Click(object sender, EventArgs e)
         {
             ChangeLineBackColor(sender as Button);
+            buffer.ChangePenWigth(3);
         }
 
         private void Line3BTN_Click(object sender, EventArgs e)
         {
             ChangeLineBackColor(sender as Button);
+            buffer.ChangePenWigth(4.5f);
         }
 
         private void Line4BTN_Click(object sender, EventArgs e)
         {
             ChangeLineBackColor(sender as Button);
+            buffer.ChangePenWigth(6);
         }
     }
 }

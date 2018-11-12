@@ -43,7 +43,7 @@ namespace MiniPaint
             this.MenuCopy = new System.Windows.Forms.ToolStripButton();
             this.MenuPaste = new System.Windows.Forms.ToolStripButton();
             this.groupBoxForTools = new System.Windows.Forms.GroupBox();
-            this.WeihtLineBTN = new System.Windows.Forms.Button();
+            this.WidthLineBTN = new System.Windows.Forms.Button();
             this.RubberToolsBTN = new System.Windows.Forms.Button();
             this.FillToolsBTN = new System.Windows.Forms.Button();
             this.TextToolsBTN = new System.Windows.Forms.Button();
@@ -181,7 +181,7 @@ namespace MiniPaint
             // 
             // groupBoxForTools
             // 
-            this.groupBoxForTools.Controls.Add(this.WeihtLineBTN);
+            this.groupBoxForTools.Controls.Add(this.WidthLineBTN);
             this.groupBoxForTools.Controls.Add(this.RubberToolsBTN);
             this.groupBoxForTools.Controls.Add(this.FillToolsBTN);
             this.groupBoxForTools.Controls.Add(this.TextToolsBTN);
@@ -194,16 +194,16 @@ namespace MiniPaint
             this.groupBoxForTools.TabIndex = 1;
             this.groupBoxForTools.TabStop = false;
             // 
-            // WeihtLineBTN
+            // WidthLineBTN
             // 
-            this.WeihtLineBTN.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.WeihtLineBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("WeihtLineBTN.BackgroundImage")));
-            this.WeihtLineBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.WeihtLineBTN.Location = new System.Drawing.Point(114, 10);
-            this.WeihtLineBTN.Name = "WeihtLineBTN";
-            this.WeihtLineBTN.Size = new System.Drawing.Size(73, 69);
-            this.WeihtLineBTN.TabIndex = 6;
-            this.WeihtLineBTN.UseVisualStyleBackColor = false;
+            this.WidthLineBTN.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.WidthLineBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("WidthLineBTN.BackgroundImage")));
+            this.WidthLineBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.WidthLineBTN.Location = new System.Drawing.Point(114, 10);
+            this.WidthLineBTN.Name = "WidthLineBTN";
+            this.WidthLineBTN.Size = new System.Drawing.Size(73, 69);
+            this.WidthLineBTN.TabIndex = 6;
+            this.WidthLineBTN.UseVisualStyleBackColor = false;
             // 
             // RubberToolsBTN
             // 
@@ -440,7 +440,7 @@ namespace MiniPaint
             // 
             // Line1BTN
             // 
-            this.Line1BTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Line1BTN.BackColor = System.Drawing.Color.NavajoWhite;
             this.Line1BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line1BTN.BackgroundImage")));
             this.Line1BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Line1BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -466,7 +466,7 @@ namespace MiniPaint
             // 
             // Line3BTN
             // 
-            this.Line3BTN.BackColor = System.Drawing.Color.NavajoWhite;
+            this.Line3BTN.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Line3BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line3BTN.BackgroundImage")));
             this.Line3BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Line3BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -562,7 +562,7 @@ namespace MiniPaint
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button ButtonColors;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button WeihtLineBTN;
+        private System.Windows.Forms.Button WidthLineBTN;
         private System.Windows.Forms.RadioButton leftRBTN;
         private System.Windows.Forms.RadioButton rightRBTN;
         private Buffer buffer;
