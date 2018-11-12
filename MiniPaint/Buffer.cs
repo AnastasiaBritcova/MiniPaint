@@ -22,7 +22,7 @@ namespace MiniPaint
         Step selected_step;
         PictureBox pbx;
 
-        public Buffer(PictureBox _pbx, Pen _pen)
+        public Buffer(PictureBox _pbx, Pen _pen, Color back)
         {
             steps = new List<Step>();
             index_current_state = -1;
@@ -31,6 +31,7 @@ namespace MiniPaint
             // здесь стандартный инструмент 
             selected_step = new Line();
             pbx = _pbx;
+            colorBack = back;
         }
 
         public void MouseUp(MouseEventArgs e) 

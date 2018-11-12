@@ -15,6 +15,7 @@ namespace MiniPaint
         {
             Graphics gr = Graphics.FromImage(bmp);
             TextBox textb = pbx.Controls[0] as TextBox;
+            
 
             if (textb!=null)
             {

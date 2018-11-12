@@ -19,7 +19,7 @@ namespace MiniPaint
         public Form1()
         {
             InitializeComponent();
-            buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 5));
+            buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 5), RightChoiceBTN.BackColor);
             buffer.ChangeStack += Buffer_ChangeStack;
             textb = new TextBox();
             textb.BackColor = SystemColors.Control; 
@@ -51,27 +51,6 @@ namespace MiniPaint
             if (colorDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             ChangeColour(colorDialog1.Color);
-
-        }
-
-        private void button1_Click(object sender, EventArgs e) // это фон над выбранным цветом
-        {
-            //Graphics gr = ColorBox.CreateGraphics();
-            //Point loc_temp = ((Button)sender).Location;
-            //loc_temp.X -= 2;
-            //loc_temp.Y -= 2;
-
-            //gr.FillRectangle(Brushes.Aqua, new Rectangle(loc_temp.X, loc_temp.Y, 36, 36));
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
-        {
 
         }
 
@@ -238,6 +217,40 @@ namespace MiniPaint
         private void ColorBTN8_Click(object sender, EventArgs e)
         {
             ChangeColour(Color.Aqua);
+        }
+
+        private void LineBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Line1BTN_Click(object sender, EventArgs e)
+        {
+            ChangeLineBackColor(sender as Button);
+        }
+        private void ChangeLineBackColor(Button butt)
+        {
+            Line1BTN.BackColor = SystemColors.ControlLight;
+            Line2BTN.BackColor = SystemColors.ControlLight;
+            Line3BTN.BackColor = SystemColors.ControlLight;
+            Line4BTN.BackColor = SystemColors.ControlLight;
+
+            butt.BackColor = Color.NavajoWhite;
+        }
+
+        private void Line2BTN_Click(object sender, EventArgs e)
+        {
+            ChangeLineBackColor(sender as Button);
+        }
+
+        private void Line3BTN_Click(object sender, EventArgs e)
+        {
+            ChangeLineBackColor(sender as Button);
+        }
+
+        private void Line4BTN_Click(object sender, EventArgs e)
+        {
+            ChangeLineBackColor(sender as Button);
         }
     }
 }

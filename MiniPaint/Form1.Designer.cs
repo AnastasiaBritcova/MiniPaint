@@ -66,14 +66,21 @@ namespace MiniPaint
             this.leftChoiceBTN = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.Line1BTN = new System.Windows.Forms.Button();
+            this.Line2BTN = new System.Windows.Forms.Button();
+            this.Line3BTN = new System.Windows.Forms.Button();
+            this.Line4BTN = new System.Windows.Forms.Button();
+            this.LineBox = new System.Windows.Forms.GroupBox();
             this.toolStripMenu.SuspendLayout();
             this.groupBoxForTools.SuspendLayout();
             this.ColorBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.LineBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripMenu
             // 
+            this.toolStripMenu.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuFile,
@@ -255,13 +262,14 @@ namespace MiniPaint
             // 
             // LineToolsBTN
             // 
+            this.LineToolsBTN.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LineToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LineToolsBTN.BackgroundImage")));
             this.LineToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.LineToolsBTN.Location = new System.Drawing.Point(0, 10);
             this.LineToolsBTN.Name = "LineToolsBTN";
             this.LineToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.LineToolsBTN.TabIndex = 0;
-            this.LineToolsBTN.UseVisualStyleBackColor = true;
+            this.LineToolsBTN.UseVisualStyleBackColor = false;
             this.LineToolsBTN.Click += new System.EventHandler(this.LineToolsBTN_Click);
             // 
             // ColorBox
@@ -292,13 +300,12 @@ namespace MiniPaint
             this.rightRBTN.Name = "rightRBTN";
             this.rightRBTN.Size = new System.Drawing.Size(14, 13);
             this.rightRBTN.TabIndex = 12;
-            this.rightRBTN.TabStop = true;
             this.rightRBTN.UseVisualStyleBackColor = true;
-            this.rightRBTN.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_1);
             // 
             // leftRBTN
             // 
             this.leftRBTN.AutoSize = true;
+            this.leftRBTN.Checked = true;
             this.leftRBTN.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
             this.leftRBTN.Location = new System.Drawing.Point(15, 45);
             this.leftRBTN.Name = "leftRBTN";
@@ -306,7 +313,6 @@ namespace MiniPaint
             this.leftRBTN.TabIndex = 11;
             this.leftRBTN.TabStop = true;
             this.leftRBTN.UseVisualStyleBackColor = true;
-            this.leftRBTN.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // ButtonColors
             // 
@@ -417,7 +423,6 @@ namespace MiniPaint
             this.leftChoiceBTN.Size = new System.Drawing.Size(32, 32);
             this.leftChoiceBTN.TabIndex = 0;
             this.leftChoiceBTN.UseVisualStyleBackColor = false;
-            this.leftChoiceBTN.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -433,12 +438,79 @@ namespace MiniPaint
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
+            // Line1BTN
+            // 
+            this.Line1BTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Line1BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line1BTN.BackgroundImage")));
+            this.Line1BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Line1BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Line1BTN.Location = new System.Drawing.Point(0, 6);
+            this.Line1BTN.Name = "Line1BTN";
+            this.Line1BTN.Size = new System.Drawing.Size(164, 27);
+            this.Line1BTN.TabIndex = 0;
+            this.Line1BTN.UseVisualStyleBackColor = false;
+            this.Line1BTN.Click += new System.EventHandler(this.Line1BTN_Click);
+            // 
+            // Line2BTN
+            // 
+            this.Line2BTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Line2BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line2BTN.BackgroundImage")));
+            this.Line2BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Line2BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Line2BTN.Location = new System.Drawing.Point(0, 28);
+            this.Line2BTN.Name = "Line2BTN";
+            this.Line2BTN.Size = new System.Drawing.Size(164, 27);
+            this.Line2BTN.TabIndex = 1;
+            this.Line2BTN.UseVisualStyleBackColor = false;
+            this.Line2BTN.Click += new System.EventHandler(this.Line2BTN_Click);
+            // 
+            // Line3BTN
+            // 
+            this.Line3BTN.BackColor = System.Drawing.Color.NavajoWhite;
+            this.Line3BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line3BTN.BackgroundImage")));
+            this.Line3BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Line3BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Line3BTN.Location = new System.Drawing.Point(0, 53);
+            this.Line3BTN.Name = "Line3BTN";
+            this.Line3BTN.Size = new System.Drawing.Size(164, 27);
+            this.Line3BTN.TabIndex = 2;
+            this.Line3BTN.UseVisualStyleBackColor = false;
+            this.Line3BTN.Click += new System.EventHandler(this.Line3BTN_Click);
+            // 
+            // Line4BTN
+            // 
+            this.Line4BTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Line4BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line4BTN.BackgroundImage")));
+            this.Line4BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Line4BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Line4BTN.Location = new System.Drawing.Point(0, 76);
+            this.Line4BTN.Name = "Line4BTN";
+            this.Line4BTN.Size = new System.Drawing.Size(164, 27);
+            this.Line4BTN.TabIndex = 3;
+            this.Line4BTN.UseVisualStyleBackColor = false;
+            this.Line4BTN.Click += new System.EventHandler(this.Line4BTN_Click);
+            // 
+            // LineBox
+            // 
+            this.LineBox.Controls.Add(this.Line4BTN);
+            this.LineBox.Controls.Add(this.Line3BTN);
+            this.LineBox.Controls.Add(this.Line2BTN);
+            this.LineBox.Controls.Add(this.Line1BTN);
+            this.LineBox.Location = new System.Drawing.Point(318, 12);
+            this.LineBox.Name = "LineBox";
+            this.LineBox.Size = new System.Drawing.Size(164, 109);
+            this.LineBox.TabIndex = 4;
+            this.LineBox.TabStop = false;
+            this.LineBox.Enter += new System.EventHandler(this.LineBox_Enter);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(975, 609);
+            this.Controls.Add(this.LineBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ColorBox);
             this.Controls.Add(this.groupBoxForTools);
@@ -451,6 +523,7 @@ namespace MiniPaint
             this.ColorBox.ResumeLayout(false);
             this.ColorBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.LineBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,6 +566,11 @@ namespace MiniPaint
         private System.Windows.Forms.RadioButton leftRBTN;
         private System.Windows.Forms.RadioButton rightRBTN;
         private Buffer buffer;
+        private System.Windows.Forms.Button Line1BTN;
+        private System.Windows.Forms.Button Line2BTN;
+        private System.Windows.Forms.Button Line3BTN;
+        private System.Windows.Forms.Button Line4BTN;
+        private System.Windows.Forms.GroupBox LineBox;
     }
 }
 
