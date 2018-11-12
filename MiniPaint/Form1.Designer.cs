@@ -205,6 +205,7 @@ namespace MiniPaint
             this.WidthLineBTN.Size = new System.Drawing.Size(73, 69);
             this.WidthLineBTN.TabIndex = 6;
             this.WidthLineBTN.UseVisualStyleBackColor = false;
+            this.WidthLineBTN.Click += new System.EventHandler(this.WidthLineBTN_Click);
             // 
             // RubberToolsBTN
             // 

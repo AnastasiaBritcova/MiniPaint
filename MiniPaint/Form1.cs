@@ -18,6 +18,7 @@ namespace MiniPaint
         TextBox textb; 
         
 
+
         public Form1()
         {
             InitializeComponent();
@@ -274,6 +275,11 @@ namespace MiniPaint
         {
             if (FlagFill)
                 buffer.MouseDown((MouseEventArgs)e);
+        }
+
+        private void WidthLineBTN_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

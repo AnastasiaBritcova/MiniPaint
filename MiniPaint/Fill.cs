@@ -59,16 +59,6 @@ namespace MiniPaint
             return;
         }
 
-
-
-
-
-
-
-
-
-
-
         private void Recursion(int x, int y, Color begin, Color newCol)
         {
             if (x >= 0 && y >= 0 && y <= pbx.Height && x <= pbx.Width && bmp.GetPixel(x, y)==begin&& bmp.GetPixel(x, y) !=newCol)           
