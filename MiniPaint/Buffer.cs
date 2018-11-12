@@ -50,7 +50,7 @@ namespace MiniPaint
 
        public void MouseDown(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+               if (e.Button == MouseButtons.Left)
                 selected_step.set_start(e.Location, pbx, pen, colorBack);
         }
 

@@ -23,7 +23,9 @@ namespace MiniPaint
         public override void set_start(Point st, PictureBox _pbx, Pen _pen, Color color)
         {           
             base.set_start(st, _pbx, _pen, color);
-             Recursion(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
+            
+            FillNoRec(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
+             //Recursion(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
             //FillRecursion(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
         }
 
@@ -73,9 +75,61 @@ namespace MiniPaint
             {
                     bmp.SetPixel(x, y, newCol);
                     Recursion(x - 1, y, begin, newCol);
-                   // Recursion(x + 1, y, begin, newCol);
-                   // Recursion(x, y - 1, begin, newCol);
+                   Recursion(x + 1, y, begin, newCol);
+                   Recursion(x, y - 1, begin, newCol);
                    Recursion(x, y + 1, begin, newCol);
+            }
+        }
+
+        private void FillNoRec(int x, int y, Color begin, Color newCol)
+        {
+            Point start = new Point(x,y);
+            FillYUp(x, y, begin, newCol);
+            FillYDown(x, y+1, begin, newCol);
+
+            x = start.X-1;
+            y = start.Y;
+            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
+                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
+            {
+                bmp.SetPixel(x, y, newCol);
+                FillYUp(x, y-1, begin, newCol);
+                FillYDown(x, y+1, begin, newCol);
+
+                x -= 1;
+            }
+
+            x = start.X+1;
+            y = start.Y;
+            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
+                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
+            {
+                bmp.SetPixel(x, y, newCol);
+                FillYUp(x, y - 1, begin, newCol);
+                FillYDown(x, y + 1, begin, newCol);
+                x += 1;
+            }
+
+
+        }
+
+        private void FillYUp(int x, int y, Color begin, Color newCol)
+        {
+            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
+                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
+            {
+                bmp.SetPixel(x, y, newCol);
+                y -= 1;
+            }            
+        }
+        
+        private void FillYDown(int x, int y, Color begin, Color newCol)
+        {
+            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
+                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y) != newCol)
+            {
+                bmp.SetPixel(x, y, newCol);
+                y += 1;
             }
         }
     }

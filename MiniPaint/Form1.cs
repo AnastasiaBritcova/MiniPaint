@@ -16,6 +16,7 @@ namespace MiniPaint
         bool flagTextEndEnter = false;
         bool FlagFill = false;
         TextBox textb; 
+        
 
         public Form1()
         {
@@ -27,6 +28,7 @@ namespace MiniPaint
 
             textb.Visible = false;
             pictureBox1.Controls.Add(textb);
+            DoubleBuffered = true;
         }
 
         private void Buffer_ChangeStack(int stack_count, int current)
