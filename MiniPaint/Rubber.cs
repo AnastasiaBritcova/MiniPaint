@@ -14,11 +14,11 @@ namespace MiniPaint
         {
             base.set_start(st, _pbx, _pen, back);
             Graphics gr = Graphics.FromImage(bmp);
-            int width = (int)pen.Width;
+            int width = (int)Pen.Width;
             
             SolidBrush brush = new SolidBrush(colorBack);
         
-            gr.FillRectangle(brush, new Rectangle(start, new Size((int)pen.Width, (int)pen.Width)));
+            gr.FillRectangle(brush, new Rectangle(start, new Size((int)Pen.Width, (int)Pen.Width)));
             
         }
 
@@ -32,9 +32,9 @@ namespace MiniPaint
             start = new Point(e.X, e.Y);
             SolidBrush brush = new SolidBrush(colorBack);
 
-            gr.FillRectangle(brush, new Rectangle(start, new Size((int)pen.Width, (int)pen.Width)));
+            gr.FillRectangle(brush, new Rectangle(start, new Size((int)Pen.Width, (int)Pen.Width)));
             Graphics grBmp = Graphics.FromImage(bmp);
-            grBmp.FillRectangle(brush, new Rectangle(start, new Size((int)pen.Width, (int)pen.Width)));
+            grBmp.FillRectangle(brush, new Rectangle(start, new Size((int)Pen.Width, (int)Pen.Width)));
             gr.Dispose();
         }
 

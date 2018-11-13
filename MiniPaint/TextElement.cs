@@ -20,7 +20,7 @@ namespace MiniPaint
             if (textb!=null)
             {
                 gr.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-                TextRenderer.DrawText(gr, textb.Text, textb.Font, textb.Location, pen.Color);
+                TextRenderer.DrawText(gr, textb.Text, textb.Font, textb.Location, Pen.Color);
             }
 
             gr.Dispose();

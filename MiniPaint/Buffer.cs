@@ -22,11 +22,13 @@ namespace MiniPaint
         Step selected_step;
         PictureBox pbx;
 
+        public Pen Pen { get => pen; set => pen = value; }
+
         public Buffer(PictureBox _pbx, Pen _pen, Color back)
         {
             steps = new List<Step>();
             index_current_state = -1;
-            pen = _pen;
+            Pen = _pen;
 
             // здесь стандартный инструмент 
             selected_step = new Line();
@@ -51,7 +53,7 @@ namespace MiniPaint
        public void MouseDown(MouseEventArgs e)
         {
                if (e.Button == MouseButtons.Left)
-                selected_step.set_start(e.Location, pbx, pen, colorBack);
+                selected_step.set_start(e.Location, pbx, Pen, colorBack);
         }
 
         public void MouseMove(MouseEventArgs e)
@@ -95,12 +97,12 @@ namespace MiniPaint
         }
         public void ChangePenColour(Color col)
         {
-            pen.Color = col;
+            Pen.Color = col;
             
         }
         public void ChangePenWigth(float wigth)
         {
-            pen.Width = wigth;
+            Pen.Width = wigth;
         }
 
         public void ChangeBackColour(Color col)

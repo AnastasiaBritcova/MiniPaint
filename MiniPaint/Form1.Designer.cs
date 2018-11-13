@@ -503,38 +503,36 @@ namespace MiniPaint
             // LineBox
             // 
             this.LineBox.Controls.Add(this.Line4BTN);
-            this.LineBox.Controls.Add(this.Line3BTN);
             this.LineBox.Controls.Add(this.Line2BTN);
             this.LineBox.Controls.Add(this.Line1BTN);
+            this.LineBox.Controls.Add(this.Line3BTN);
             this.LineBox.Location = new System.Drawing.Point(294, 12);
             this.LineBox.Name = "LineBox";
             this.LineBox.Size = new System.Drawing.Size(188, 109);
             this.LineBox.TabIndex = 4;
             this.LineBox.TabStop = false;
             this.LineBox.Visible = false;
-            this.LineBox.Enter += new System.EventHandler(this.LineBox_Enter);
             // 
             // RubberOptionBox
             // 
             this.RubberOptionBox.Controls.Add(this.RubberPictureBox);
             this.RubberOptionBox.Controls.Add(this.RubberPlusBTN);
             this.RubberOptionBox.Controls.Add(this.RubberMinusBTN);
-            this.RubberOptionBox.Location = new System.Drawing.Point(45, 27);
+            this.RubberOptionBox.Location = new System.Drawing.Point(274, 12);
             this.RubberOptionBox.Name = "RubberOptionBox";
             this.RubberOptionBox.Size = new System.Drawing.Size(221, 115);
             this.RubberOptionBox.TabIndex = 4;
             this.RubberOptionBox.TabStop = false;
             this.RubberOptionBox.Visible = false;
-            this.RubberOptionBox.Enter += new System.EventHandler(this.RubberOptionBox_Enter);
             // 
             // RubberPictureBox
             // 
+            this.RubberPictureBox.BackColor = System.Drawing.SystemColors.Control;
             this.RubberPictureBox.Location = new System.Drawing.Point(66, 15);
             this.RubberPictureBox.Name = "RubberPictureBox";
-            this.RubberPictureBox.Size = new System.Drawing.Size(90, 88);
+            this.RubberPictureBox.Size = new System.Drawing.Size(90, 90);
             this.RubberPictureBox.TabIndex = 5;
             this.RubberPictureBox.TabStop = false;
-            this.RubberPictureBox.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // RubberPlusBTN
             // 
@@ -565,15 +563,14 @@ namespace MiniPaint
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(975, 609);
+            this.Controls.Add(this.RubberOptionBox);
             this.Controls.Add(this.LineBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ColorBox);
             this.Controls.Add(this.groupBoxForTools);
             this.Controls.Add(this.toolStripMenu);
-            this.Controls.Add(this.RubberOptionBox);
             this.Name = "Form1";
             this.Text = "Mini paint";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             this.groupBoxForTools.ResumeLayout(false);

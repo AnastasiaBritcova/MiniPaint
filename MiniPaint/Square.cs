@@ -15,7 +15,7 @@ namespace MiniPaint
             if (flag_draw)
             {
                 Graphics gr = Graphics.FromImage(bmp);
-                gr.DrawRectangle(pen, CreateRect(start, end));
+                gr.DrawRectangle(Pen, CreateRect(start, end));
 
                 gr.Dispose();
             }
@@ -30,7 +30,7 @@ namespace MiniPaint
 
             end = new Point(e.X, e.Y);
 
-            gr.DrawRectangle(pen, CreateRect(start, end));
+            gr.DrawRectangle(Pen, CreateRect(start, end));
 
             gr.Dispose();
         }

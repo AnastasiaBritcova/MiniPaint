@@ -10,7 +10,7 @@ namespace MiniPaint
 {
     abstract class Step
     {
-        protected Pen pen;
+        private Pen pen;
         protected Color colorBack;
         protected Point start;
         protected Point end;
@@ -19,6 +19,8 @@ namespace MiniPaint
         protected PictureBox pbx;
         protected bool flag_draw;
 
+        protected Pen Pen { get => pen; set => pen = value; }
+
         public Bitmap GetBitmap()
         { return bmp; }
 
@@ -26,7 +28,7 @@ namespace MiniPaint
         {
             start = st;
             pbx = _pbx;
-            pen = _pen;
+            Pen = _pen;
             bmp = new Bitmap(pbx.Image, pbx.Width, pbx.Height);
             pbx.Image = bmp;
             colorBack = color;

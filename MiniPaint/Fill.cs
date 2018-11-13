@@ -24,7 +24,7 @@ namespace MiniPaint
         {           
             base.set_start(st, _pbx, _pen, color);
             
-            FillNoRec(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
+            FillNoRec(st.X, st.Y, bmp.GetPixel(st.X, st.Y), Pen.Color);
              //Recursion(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
             //FillRecursion(st.X, st.Y, bmp.GetPixel(st.X, st.Y), pen.Color);
         }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace MiniPaint
 {
@@ -30,6 +31,7 @@ namespace MiniPaint
             textb.Visible = false;
             pictureBox1.Controls.Add(textb);
             DoubleBuffered = true;
+
         }
 
         private void Buffer_ChangeStack(int stack_count, int current)
@@ -230,11 +232,6 @@ namespace MiniPaint
             ChangeColour(Color.Aqua);
         }
 
-        private void LineBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void Line1BTN_Click(object sender, EventArgs e)
         {
             ChangeLineBackColor(sender as Button);
@@ -300,32 +297,41 @@ namespace MiniPaint
             else if (tools == Tools.rubber) {
                 LineBox.Hide();
                 RubberOptionBox.Show();
+
+                DrawRubber(0);
+
             }
             //else if (tools == Tools.)
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
+
+        private void RubberPlusBTN_Click(object sender, EventArgs e) {
+
+            if (buffer.Pen.Width < 81)
+            {
+                DrawRubber(3);
+            }
 
         }
-
-        private void RubberOptionBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RubberPlusBTN_Click(object sender, EventArgs e)
-        {
-           // buffer.ChangePenWigth();
-        }
-
+            
         private void RubberMinusBTN_Click(object sender, EventArgs e)
         {
+            if (buffer.Pen.Width > 3)
+            {
+                DrawRubber(-3);
+            }
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void DrawRubber(int x) {
+
+            Graphics RubberGraphics = RubberPictureBox.CreateGraphics();
+            RubberGraphics.Clear(SystemColors.Control);
+            buffer.ChangePenWigth(buffer.Pen.Width + x);
+            Pen newPen = new Pen(Color.Black, 2);
+
+            RubberGraphics.DrawRectangle(newPen, 45 - buffer.Pen.Width / 2, 45 - buffer.Pen.Width / 2, buffer.Pen.Width, buffer.Pen.Width);
+            RubberGraphics.Dispose();
 
         }
     }
