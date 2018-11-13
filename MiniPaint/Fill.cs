@@ -30,64 +30,70 @@ namespace MiniPaint
 
         private void FillMethod(int x, int y, Color begin, Color newCol)
         {
+            int argbBegin = begin.ToArgb();
+            int argbNew = newCol.ToArgb();
+
             Point start = new Point(x, y);
                 FillYUp(x, y, begin, newCol);
                 FillYDown(x, y + 1, begin, newCol);
 
-                x = start.X - 1;
-                y = start.Y;
-                FillXLeft(x, y, begin, newCol);
+            //x = start.X - 1;
+            //y = start.Y;
+            ////FillXLeft(x, y, begin, newCol);
 
-                x = start.X + 1;
-                y = start.Y;
-                FillXRight(x, y, begin, newCol);
+            //x = start.X + 1;
+            //y = start.Y;
+            ////FillXRight(x, y, begin, newCol);
         }
 
         private void FillYUp(int x, int y, Color begin, Color newCol)
         {
+            int argbBegin = begin.ToArgb();
+            int argbNew = newCol.ToArgb();
             while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
-                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y).ToArgb() != newCol.ToArgb())
+                bmp.GetPixel(x, y).ToArgb() == argbBegin && bmp.GetPixel(x, y).ToArgb() != argbNew)
             {
                 bmp.SetPixel(x, y, newCol);
                 FillXLeft(x-1, y, begin, newCol);
+                FillXRight(x + 1, y, begin, newCol);
                 y -= 1;
-            }            
+            }
         }
         
         private void FillYDown(int x, int y, Color begin, Color newCol)
         {
+            int argbBegin = begin.ToArgb();
+            int argbNew = newCol.ToArgb();
             while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
-                bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y).ToArgb() != newCol.ToArgb())
+                bmp.GetPixel(x, y).ToArgb() == argbBegin && bmp.GetPixel(x, y).ToArgb() != argbNew)
             {
                 bmp.SetPixel(x, y, newCol);
                 FillXRight(x + 1, y, begin, newCol);
-
+                FillXLeft(x - 1, y, begin, newCol);
                 y += 1;
             }
         }
 
         private void FillXLeft(int x, int y, Color begin, Color newCol)
         {
+            int argbBegin = begin.ToArgb();
+            int argbNew = newCol.ToArgb();
             while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
-               bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y).ToArgb() != newCol.ToArgb())
+                bmp.GetPixel(x, y).ToArgb() == argbBegin && bmp.GetPixel(x, y).ToArgb() != argbNew)
             {
                 bmp.SetPixel(x, y, newCol);
-                FillYUp(x, y - 1, begin, newCol);
-                FillYDown(x, y + 1, begin, newCol);
-
                 x -= 1;
             }
         }
 
         private void FillXRight(int x, int y, Color begin, Color newCol)
         {
+            int argbBegin = begin.ToArgb();
+            int argbNew = newCol.ToArgb();
             while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
-               bmp.GetPixel(x, y) == begin && bmp.GetPixel(x, y).ToArgb() != newCol.ToArgb())
+                bmp.GetPixel(x, y).ToArgb() == argbBegin && bmp.GetPixel(x, y).ToArgb() != argbNew)
             {
                 bmp.SetPixel(x, y, newCol);
-                FillYUp(x, y - 1, begin, newCol);
-                FillYDown(x, y + 1, begin, newCol);
-
                 x += 1;
             }
         }

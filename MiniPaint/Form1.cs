@@ -34,22 +34,11 @@ namespace MiniPaint
 
         }
 
-        private void Buffer_ChangeStack(int stack_count, int current)
+
+       private void Buffer_ChangeStack(bool undo, bool redo)
         {
-            if (stack_count == 0)
-                MenuDo.Enabled = MenuUndo.Enabled = false;
-            else if (current == stack_count-1)
-            {
-                MenuUndo.Enabled = true;
-                MenuDo.Enabled = false;
-            }
-            else if (current==-1)
-            {
-                MenuDo.Enabled = true;
-                MenuUndo.Enabled = false;
-            }
-            else if (current < stack_count-1)
-                MenuDo.Enabled = MenuUndo.Enabled = true;
+            MenuUndo.Enabled = undo;
+            MenuDo.Enabled = redo;
         }
 
         private void ButtonColors_Click(object sender, EventArgs e)
@@ -338,6 +327,21 @@ namespace MiniPaint
         {
             if (RubberOptionBox.Visible)
                 DrawRubber();
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buffer.Save();
+        }
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "Images|*.png;*.bmp;*.jpg";
+
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result== DialogResult.OK)
+                buffer.SaveAs(saveFileDialog1.FileName);
+
         }
     }
 }
