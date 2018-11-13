@@ -22,7 +22,11 @@ namespace MiniPaint
         Step selected_step;
         PictureBox pbx;
 
-        public Pen Pen { get => pen; set => pen = value; }
+        public Pen Pen
+        {
+            get { return pen; }
+            set { pen = value; }
+        }
 
         public Buffer(PictureBox _pbx, Pen _pen, Color back)
         {

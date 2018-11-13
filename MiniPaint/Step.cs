@@ -19,7 +19,11 @@ namespace MiniPaint
         protected PictureBox pbx;
         protected bool flag_draw;
 
-        protected Pen Pen { get => pen; set => pen = value; }
+        protected Pen Pen
+        {
+            get { return pen; }
+            set { pen = value; }
+        }
 
         public Bitmap GetBitmap()
         { return bmp; }

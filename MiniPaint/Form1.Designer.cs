@@ -73,9 +73,9 @@ namespace MiniPaint
             this.LineBox = new System.Windows.Forms.GroupBox();
             this.RubberOptionBox = new System.Windows.Forms.GroupBox();
             this.RubberPictureBox = new System.Windows.Forms.PictureBox();
-            this.RubberPlusBTN = new System.Windows.Forms.Button();
             this.RubberMinusBTN = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.RubberPlusBTN = new System.Windows.Forms.Button();
             this.toolStripMenu.SuspendLayout();
             this.groupBoxForTools.SuspendLayout();
             this.ColorBox.SuspendLayout();
@@ -97,7 +97,7 @@ namespace MiniPaint
             this.MenuPaste});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(975, 27);
+            this.toolStripMenu.Size = new System.Drawing.Size(1300, 27);
             this.toolStripMenu.TabIndex = 0;
             this.toolStripMenu.Text = "toolStripMenu";
             // 
@@ -113,37 +113,37 @@ namespace MiniPaint
             this.MenuFile.Image = ((System.Drawing.Image)(resources.GetObject("MenuFile.Image")));
             this.MenuFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuFile.Name = "MenuFile";
-            this.MenuFile.Size = new System.Drawing.Size(33, 24);
+            this.MenuFile.Size = new System.Drawing.Size(34, 24);
             this.MenuFile.Text = "toolStripDropDownButton1";
             // 
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.открытьToolStripMenuItem.Text = "Открыть";
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             // 
             // сохранитьКакToolStripMenuItem
             // 
             this.сохранитьКакToolStripMenuItem.Name = "сохранитьКакToolStripMenuItem";
-            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.сохранитьКакToolStripMenuItem.Text = "Сохранить как";
             // 
             // печатьToolStripMenuItem
             // 
             this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-            this.печатьToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.печатьToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.печатьToolStripMenuItem.Text = "Печать";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // MenuUndo
@@ -195,9 +195,11 @@ namespace MiniPaint
             this.groupBoxForTools.Controls.Add(this.ElipseToolsBTN);
             this.groupBoxForTools.Controls.Add(this.SquardToolsBTN);
             this.groupBoxForTools.Controls.Add(this.LineToolsBTN);
-            this.groupBoxForTools.Location = new System.Drawing.Point(501, 18);
+            this.groupBoxForTools.Location = new System.Drawing.Point(668, 22);
+            this.groupBoxForTools.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxForTools.Name = "groupBoxForTools";
-            this.groupBoxForTools.Size = new System.Drawing.Size(187, 79);
+            this.groupBoxForTools.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxForTools.Size = new System.Drawing.Size(249, 97);
             this.groupBoxForTools.TabIndex = 1;
             this.groupBoxForTools.TabStop = false;
             // 
@@ -206,9 +208,10 @@ namespace MiniPaint
             this.WidthLineBTN.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.WidthLineBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("WidthLineBTN.BackgroundImage")));
             this.WidthLineBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.WidthLineBTN.Location = new System.Drawing.Point(114, 10);
+            this.WidthLineBTN.Location = new System.Drawing.Point(152, 12);
+            this.WidthLineBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.WidthLineBTN.Name = "WidthLineBTN";
-            this.WidthLineBTN.Size = new System.Drawing.Size(73, 69);
+            this.WidthLineBTN.Size = new System.Drawing.Size(97, 85);
             this.WidthLineBTN.TabIndex = 6;
             this.WidthLineBTN.UseVisualStyleBackColor = false;
             this.WidthLineBTN.Click += new System.EventHandler(this.WidthLineBTN_Click);
@@ -217,9 +220,10 @@ namespace MiniPaint
             // 
             this.RubberToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RubberToolsBTN.BackgroundImage")));
             this.RubberToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.RubberToolsBTN.Location = new System.Drawing.Point(76, 47);
+            this.RubberToolsBTN.Location = new System.Drawing.Point(101, 58);
+            this.RubberToolsBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RubberToolsBTN.Name = "RubberToolsBTN";
-            this.RubberToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.RubberToolsBTN.Size = new System.Drawing.Size(43, 39);
             this.RubberToolsBTN.TabIndex = 5;
             this.RubberToolsBTN.UseVisualStyleBackColor = true;
             this.RubberToolsBTN.Click += new System.EventHandler(this.RubberToolsBTN_Click);
@@ -228,9 +232,10 @@ namespace MiniPaint
             // 
             this.FillToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FillToolsBTN.BackgroundImage")));
             this.FillToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FillToolsBTN.Location = new System.Drawing.Point(38, 47);
+            this.FillToolsBTN.Location = new System.Drawing.Point(51, 58);
+            this.FillToolsBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FillToolsBTN.Name = "FillToolsBTN";
-            this.FillToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.FillToolsBTN.Size = new System.Drawing.Size(43, 39);
             this.FillToolsBTN.TabIndex = 4;
             this.FillToolsBTN.UseVisualStyleBackColor = true;
             this.FillToolsBTN.Click += new System.EventHandler(this.FillToolsBTN_Click);
@@ -240,9 +245,10 @@ namespace MiniPaint
             this.TextToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TextToolsBTN.BackgroundImage")));
             this.TextToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.TextToolsBTN.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.TextToolsBTN.Location = new System.Drawing.Point(0, 48);
+            this.TextToolsBTN.Location = new System.Drawing.Point(0, 59);
+            this.TextToolsBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TextToolsBTN.Name = "TextToolsBTN";
-            this.TextToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.TextToolsBTN.Size = new System.Drawing.Size(43, 39);
             this.TextToolsBTN.TabIndex = 3;
             this.TextToolsBTN.UseVisualStyleBackColor = true;
             this.TextToolsBTN.Click += new System.EventHandler(this.TextToolsBTN_Click);
@@ -251,9 +257,10 @@ namespace MiniPaint
             // 
             this.ElipseToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ElipseToolsBTN.BackgroundImage")));
             this.ElipseToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ElipseToolsBTN.Location = new System.Drawing.Point(38, 10);
+            this.ElipseToolsBTN.Location = new System.Drawing.Point(51, 12);
+            this.ElipseToolsBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ElipseToolsBTN.Name = "ElipseToolsBTN";
-            this.ElipseToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.ElipseToolsBTN.Size = new System.Drawing.Size(43, 39);
             this.ElipseToolsBTN.TabIndex = 1;
             this.ElipseToolsBTN.UseVisualStyleBackColor = true;
             this.ElipseToolsBTN.Click += new System.EventHandler(this.ElipseToolsBTN_Click);
@@ -262,9 +269,10 @@ namespace MiniPaint
             // 
             this.SquardToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SquardToolsBTN.BackgroundImage")));
             this.SquardToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SquardToolsBTN.Location = new System.Drawing.Point(76, 10);
+            this.SquardToolsBTN.Location = new System.Drawing.Point(101, 12);
+            this.SquardToolsBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SquardToolsBTN.Name = "SquardToolsBTN";
-            this.SquardToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.SquardToolsBTN.Size = new System.Drawing.Size(43, 39);
             this.SquardToolsBTN.TabIndex = 2;
             this.SquardToolsBTN.UseVisualStyleBackColor = true;
             this.SquardToolsBTN.Click += new System.EventHandler(this.SquardToolsBTN_Click);
@@ -274,9 +282,10 @@ namespace MiniPaint
             this.LineToolsBTN.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LineToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LineToolsBTN.BackgroundImage")));
             this.LineToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.LineToolsBTN.Location = new System.Drawing.Point(0, 10);
+            this.LineToolsBTN.Location = new System.Drawing.Point(0, 12);
+            this.LineToolsBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LineToolsBTN.Name = "LineToolsBTN";
-            this.LineToolsBTN.Size = new System.Drawing.Size(32, 32);
+            this.LineToolsBTN.Size = new System.Drawing.Size(43, 39);
             this.LineToolsBTN.TabIndex = 0;
             this.LineToolsBTN.UseVisualStyleBackColor = false;
             this.LineToolsBTN.Click += new System.EventHandler(this.LineToolsBTN_Click);
@@ -296,18 +305,21 @@ namespace MiniPaint
             this.ColorBox.Controls.Add(this.ColorBTN1);
             this.ColorBox.Controls.Add(this.RightChoiceBTN);
             this.ColorBox.Controls.Add(this.leftChoiceBTN);
-            this.ColorBox.Location = new System.Drawing.Point(694, 27);
+            this.ColorBox.Location = new System.Drawing.Point(925, 33);
+            this.ColorBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBox.Name = "ColorBox";
-            this.ColorBox.Size = new System.Drawing.Size(281, 69);
+            this.ColorBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ColorBox.Size = new System.Drawing.Size(375, 85);
             this.ColorBox.TabIndex = 2;
             this.ColorBox.TabStop = false;
             // 
             // rightRBTN
             // 
             this.rightRBTN.AutoSize = true;
-            this.rightRBTN.Location = new System.Drawing.Point(53, 46);
+            this.rightRBTN.Location = new System.Drawing.Point(71, 57);
+            this.rightRBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rightRBTN.Name = "rightRBTN";
-            this.rightRBTN.Size = new System.Drawing.Size(14, 13);
+            this.rightRBTN.Size = new System.Drawing.Size(17, 16);
             this.rightRBTN.TabIndex = 12;
             this.rightRBTN.UseVisualStyleBackColor = true;
             // 
@@ -316,9 +328,10 @@ namespace MiniPaint
             this.leftRBTN.AutoSize = true;
             this.leftRBTN.Checked = true;
             this.leftRBTN.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.leftRBTN.Location = new System.Drawing.Point(15, 45);
+            this.leftRBTN.Location = new System.Drawing.Point(20, 55);
+            this.leftRBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.leftRBTN.Name = "leftRBTN";
-            this.leftRBTN.Size = new System.Drawing.Size(14, 13);
+            this.leftRBTN.Size = new System.Drawing.Size(17, 16);
             this.leftRBTN.TabIndex = 11;
             this.leftRBTN.TabStop = true;
             this.leftRBTN.UseVisualStyleBackColor = true;
@@ -327,9 +340,10 @@ namespace MiniPaint
             // 
             this.ButtonColors.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonColors.BackgroundImage")));
             this.ButtonColors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonColors.Location = new System.Drawing.Point(226, 8);
+            this.ButtonColors.Location = new System.Drawing.Point(301, 10);
+            this.ButtonColors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonColors.Name = "ButtonColors";
-            this.ButtonColors.Size = new System.Drawing.Size(49, 44);
+            this.ButtonColors.Size = new System.Drawing.Size(65, 54);
             this.ButtonColors.TabIndex = 10;
             this.ButtonColors.UseVisualStyleBackColor = true;
             this.ButtonColors.Click += new System.EventHandler(this.ButtonColors_Click);
@@ -337,9 +351,10 @@ namespace MiniPaint
             // ColorBTN8
             // 
             this.ColorBTN8.BackColor = System.Drawing.Color.Aqua;
-            this.ColorBTN8.Location = new System.Drawing.Point(185, 39);
+            this.ColorBTN8.Location = new System.Drawing.Point(247, 48);
+            this.ColorBTN8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBTN8.Name = "ColorBTN8";
-            this.ColorBTN8.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN8.Size = new System.Drawing.Size(33, 31);
             this.ColorBTN8.TabIndex = 9;
             this.ColorBTN8.UseVisualStyleBackColor = false;
             this.ColorBTN8.Click += new System.EventHandler(this.ColorBTN8_Click);
@@ -347,9 +362,10 @@ namespace MiniPaint
             // ColorBTN4
             // 
             this.ColorBTN4.BackColor = System.Drawing.Color.Blue;
-            this.ColorBTN4.Location = new System.Drawing.Point(185, 8);
+            this.ColorBTN4.Location = new System.Drawing.Point(247, 10);
+            this.ColorBTN4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBTN4.Name = "ColorBTN4";
-            this.ColorBTN4.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN4.Size = new System.Drawing.Size(33, 31);
             this.ColorBTN4.TabIndex = 8;
             this.ColorBTN4.UseVisualStyleBackColor = false;
             this.ColorBTN4.Click += new System.EventHandler(this.ColorBTN4_Click);
@@ -357,9 +373,10 @@ namespace MiniPaint
             // ColorBTN7
             // 
             this.ColorBTN7.BackColor = System.Drawing.Color.Yellow;
-            this.ColorBTN7.Location = new System.Drawing.Point(154, 39);
+            this.ColorBTN7.Location = new System.Drawing.Point(205, 48);
+            this.ColorBTN7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBTN7.Name = "ColorBTN7";
-            this.ColorBTN7.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN7.Size = new System.Drawing.Size(33, 31);
             this.ColorBTN7.TabIndex = 7;
             this.ColorBTN7.UseVisualStyleBackColor = false;
             this.ColorBTN7.Click += new System.EventHandler(this.ColorBTN7_Click);
@@ -367,9 +384,10 @@ namespace MiniPaint
             // ColorBTN3
             // 
             this.ColorBTN3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ColorBTN3.Location = new System.Drawing.Point(154, 8);
+            this.ColorBTN3.Location = new System.Drawing.Point(205, 10);
+            this.ColorBTN3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBTN3.Name = "ColorBTN3";
-            this.ColorBTN3.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN3.Size = new System.Drawing.Size(33, 31);
             this.ColorBTN3.TabIndex = 6;
             this.ColorBTN3.UseVisualStyleBackColor = false;
             this.ColorBTN3.Click += new System.EventHandler(this.ColorBTN3_Click);
@@ -377,9 +395,10 @@ namespace MiniPaint
             // ColorBTN6
             // 
             this.ColorBTN6.BackColor = System.Drawing.Color.Fuchsia;
-            this.ColorBTN6.Location = new System.Drawing.Point(123, 38);
+            this.ColorBTN6.Location = new System.Drawing.Point(164, 47);
+            this.ColorBTN6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBTN6.Name = "ColorBTN6";
-            this.ColorBTN6.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN6.Size = new System.Drawing.Size(33, 31);
             this.ColorBTN6.TabIndex = 5;
             this.ColorBTN6.UseVisualStyleBackColor = false;
             this.ColorBTN6.Click += new System.EventHandler(this.ColorBTN6_Click);
@@ -387,9 +406,10 @@ namespace MiniPaint
             // ColorBTN2
             // 
             this.ColorBTN2.BackColor = System.Drawing.Color.Red;
-            this.ColorBTN2.Location = new System.Drawing.Point(123, 8);
+            this.ColorBTN2.Location = new System.Drawing.Point(164, 10);
+            this.ColorBTN2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBTN2.Name = "ColorBTN2";
-            this.ColorBTN2.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN2.Size = new System.Drawing.Size(33, 31);
             this.ColorBTN2.TabIndex = 4;
             this.ColorBTN2.UseVisualStyleBackColor = false;
             this.ColorBTN2.Click += new System.EventHandler(this.ColorBTN2_Click);
@@ -397,9 +417,10 @@ namespace MiniPaint
             // ColorBTN5
             // 
             this.ColorBTN5.BackColor = System.Drawing.Color.Black;
-            this.ColorBTN5.Location = new System.Drawing.Point(92, 38);
+            this.ColorBTN5.Location = new System.Drawing.Point(123, 47);
+            this.ColorBTN5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBTN5.Name = "ColorBTN5";
-            this.ColorBTN5.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN5.Size = new System.Drawing.Size(33, 31);
             this.ColorBTN5.TabIndex = 3;
             this.ColorBTN5.UseVisualStyleBackColor = false;
             this.ColorBTN5.Click += new System.EventHandler(this.ColorBTN5_Click);
@@ -407,9 +428,10 @@ namespace MiniPaint
             // ColorBTN1
             // 
             this.ColorBTN1.BackColor = System.Drawing.Color.White;
-            this.ColorBTN1.Location = new System.Drawing.Point(92, 8);
+            this.ColorBTN1.Location = new System.Drawing.Point(123, 10);
+            this.ColorBTN1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ColorBTN1.Name = "ColorBTN1";
-            this.ColorBTN1.Size = new System.Drawing.Size(25, 25);
+            this.ColorBTN1.Size = new System.Drawing.Size(33, 31);
             this.ColorBTN1.TabIndex = 2;
             this.ColorBTN1.UseVisualStyleBackColor = false;
             this.ColorBTN1.Click += new System.EventHandler(this.ColorBTN1_Click);
@@ -418,18 +440,20 @@ namespace MiniPaint
             // 
             this.RightChoiceBTN.BackColor = System.Drawing.Color.White;
             this.RightChoiceBTN.ForeColor = System.Drawing.Color.Coral;
-            this.RightChoiceBTN.Location = new System.Drawing.Point(44, 8);
+            this.RightChoiceBTN.Location = new System.Drawing.Point(59, 10);
+            this.RightChoiceBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RightChoiceBTN.Name = "RightChoiceBTN";
-            this.RightChoiceBTN.Size = new System.Drawing.Size(32, 32);
+            this.RightChoiceBTN.Size = new System.Drawing.Size(43, 39);
             this.RightChoiceBTN.TabIndex = 1;
             this.RightChoiceBTN.UseVisualStyleBackColor = false;
             // 
             // leftChoiceBTN
             // 
             this.leftChoiceBTN.BackColor = System.Drawing.Color.Black;
-            this.leftChoiceBTN.Location = new System.Drawing.Point(6, 8);
+            this.leftChoiceBTN.Location = new System.Drawing.Point(8, 10);
+            this.leftChoiceBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.leftChoiceBTN.Name = "leftChoiceBTN";
-            this.leftChoiceBTN.Size = new System.Drawing.Size(32, 32);
+            this.leftChoiceBTN.Size = new System.Drawing.Size(43, 39);
             this.leftChoiceBTN.TabIndex = 0;
             this.leftChoiceBTN.UseVisualStyleBackColor = false;
             // 
@@ -437,9 +461,10 @@ namespace MiniPaint
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(28, 127);
+            this.pictureBox1.Location = new System.Drawing.Point(37, 156);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(848, 473);
+            this.pictureBox1.Size = new System.Drawing.Size(1131, 582);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.clickPictureBox);
@@ -454,9 +479,10 @@ namespace MiniPaint
             this.Line1BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line1BTN.BackgroundImage")));
             this.Line1BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Line1BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Line1BTN.Location = new System.Drawing.Point(0, 6);
+            this.Line1BTN.Location = new System.Drawing.Point(0, 7);
+            this.Line1BTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Line1BTN.Name = "Line1BTN";
-            this.Line1BTN.Size = new System.Drawing.Size(164, 27);
+            this.Line1BTN.Size = new System.Drawing.Size(219, 33);
             this.Line1BTN.TabIndex = 0;
             this.Line1BTN.UseVisualStyleBackColor = false;
             this.Line1BTN.Click += new System.EventHandler(this.Line1BTN_Click);
@@ -467,9 +493,10 @@ namespace MiniPaint
             this.Line2BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line2BTN.BackgroundImage")));
             this.Line2BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Line2BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Line2BTN.Location = new System.Drawing.Point(0, 32);
+            this.Line2BTN.Location = new System.Drawing.Point(0, 39);
+            this.Line2BTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Line2BTN.Name = "Line2BTN";
-            this.Line2BTN.Size = new System.Drawing.Size(164, 27);
+            this.Line2BTN.Size = new System.Drawing.Size(219, 33);
             this.Line2BTN.TabIndex = 1;
             this.Line2BTN.UseVisualStyleBackColor = false;
             this.Line2BTN.Click += new System.EventHandler(this.Line2BTN_Click);
@@ -480,9 +507,10 @@ namespace MiniPaint
             this.Line3BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Line3BTN.BackgroundImage")));
             this.Line3BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Line3BTN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Line3BTN.Location = new System.Drawing.Point(0, 56);
+            this.Line3BTN.Location = new System.Drawing.Point(0, 69);
+            this.Line3BTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Line3BTN.Name = "Line3BTN";
-            this.Line3BTN.Size = new System.Drawing.Size(164, 27);
+            this.Line3BTN.Size = new System.Drawing.Size(219, 33);
             this.Line3BTN.TabIndex = 2;
             this.Line3BTN.UseVisualStyleBackColor = false;
             this.Line3BTN.Click += new System.EventHandler(this.Line3BTN_Click);
@@ -502,13 +530,14 @@ namespace MiniPaint
             // 
             // LineBox
             // 
-            //this.LineBox.Controls.Add(this.Line4BTN);
             this.LineBox.Controls.Add(this.Line2BTN);
             this.LineBox.Controls.Add(this.Line1BTN);
             this.LineBox.Controls.Add(this.Line3BTN);
-            this.LineBox.Location = new System.Drawing.Point(294, 12);
+            this.LineBox.Location = new System.Drawing.Point(392, 15);
+            this.LineBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LineBox.Name = "LineBox";
-            this.LineBox.Size = new System.Drawing.Size(188, 109);
+            this.LineBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LineBox.Size = new System.Drawing.Size(251, 134);
             this.LineBox.TabIndex = 4;
             this.LineBox.TabStop = false;
             this.LineBox.Visible = false;
@@ -518,57 +547,64 @@ namespace MiniPaint
             this.RubberOptionBox.Controls.Add(this.RubberPictureBox);
             this.RubberOptionBox.Controls.Add(this.RubberPlusBTN);
             this.RubberOptionBox.Controls.Add(this.RubberMinusBTN);
-            this.RubberOptionBox.Location = new System.Drawing.Point(274, 12);
+            this.RubberOptionBox.Location = new System.Drawing.Point(365, 15);
+            this.RubberOptionBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RubberOptionBox.Name = "RubberOptionBox";
-            this.RubberOptionBox.Size = new System.Drawing.Size(221, 115);
+            this.RubberOptionBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RubberOptionBox.Size = new System.Drawing.Size(295, 142);
             this.RubberOptionBox.TabIndex = 4;
             this.RubberOptionBox.TabStop = false;
             this.RubberOptionBox.Visible = false;
+            this.RubberOptionBox.Paint += new System.Windows.Forms.PaintEventHandler(this.RubberPictureBox_Paint);
             // 
             // RubberPictureBox
             // 
             this.RubberPictureBox.BackColor = System.Drawing.SystemColors.Control;
-            this.RubberPictureBox.Location = new System.Drawing.Point(66, 15);
+            this.RubberPictureBox.Location = new System.Drawing.Point(88, 18);
+            this.RubberPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RubberPictureBox.Name = "RubberPictureBox";
-            this.RubberPictureBox.Size = new System.Drawing.Size(90, 90);
+            this.RubberPictureBox.Size = new System.Drawing.Size(120, 111);
             this.RubberPictureBox.TabIndex = 5;
             this.RubberPictureBox.TabStop = false;
-            // 
-            // RubberPlusBTN
-            // 
-            this.RubberPlusBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RubberPlusBTN.BackgroundImage")));
-            this.RubberPlusBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.RubberPlusBTN.Location = new System.Drawing.Point(175, 35);
-            this.RubberPlusBTN.Name = "RubberPlusBTN";
-            this.RubberPlusBTN.Size = new System.Drawing.Size(40, 40);
-            this.RubberPlusBTN.TabIndex = 1;
-            this.RubberPlusBTN.UseVisualStyleBackColor = true;
-            this.RubberPlusBTN.Click += new System.EventHandler(this.RubberPlusBTN_Click);
             // 
             // RubberMinusBTN
             // 
             this.RubberMinusBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RubberMinusBTN.BackgroundImage")));
             this.RubberMinusBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.RubberMinusBTN.Location = new System.Drawing.Point(6, 35);
+            this.RubberMinusBTN.Location = new System.Drawing.Point(8, 43);
+            this.RubberMinusBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RubberMinusBTN.Name = "RubberMinusBTN";
-            this.RubberMinusBTN.Size = new System.Drawing.Size(40, 40);
+            this.RubberMinusBTN.Size = new System.Drawing.Size(53, 49);
             this.RubberMinusBTN.TabIndex = 0;
             this.RubberMinusBTN.UseVisualStyleBackColor = true;
             this.RubberMinusBTN.Click += new System.EventHandler(this.RubberMinusBTN_Click);
             // 
+            // RubberPlusBTN
+            // 
+            this.RubberPlusBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RubberPlusBTN.BackgroundImage")));
+            this.RubberPlusBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RubberPlusBTN.Location = new System.Drawing.Point(233, 43);
+            this.RubberPlusBTN.Margin = new System.Windows.Forms.Padding(4);
+            this.RubberPlusBTN.Name = "RubberPlusBTN";
+            this.RubberPlusBTN.Size = new System.Drawing.Size(53, 49);
+            this.RubberPlusBTN.TabIndex = 1;
+            this.RubberPlusBTN.UseVisualStyleBackColor = true;
+            this.RubberPlusBTN.Click += new System.EventHandler(this.RubberPlusBTN_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(975, 609);
+            this.ClientSize = new System.Drawing.Size(1300, 750);
             this.Controls.Add(this.RubberOptionBox);
             this.Controls.Add(this.LineBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ColorBox);
             this.Controls.Add(this.groupBoxForTools);
             this.Controls.Add(this.toolStripMenu);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Mini paint";
             this.toolStripMenu.ResumeLayout(false);
@@ -630,8 +666,8 @@ namespace MiniPaint
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.GroupBox RubberOptionBox;
         private System.Windows.Forms.PictureBox RubberPictureBox;
-        private System.Windows.Forms.Button RubberPlusBTN;
         private System.Windows.Forms.Button RubberMinusBTN;
+        private System.Windows.Forms.Button RubberPlusBTN;
     }
 }
 

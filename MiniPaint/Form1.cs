@@ -294,12 +294,12 @@ namespace MiniPaint
                 RubberOptionBox.Hide();
                 LineBox.Show();
             }
-            else if (tools == Tools.rubber) {
+            else if (tools == Tools.rubber)
+            {
                 LineBox.Hide();
-                RubberOptionBox.Show();
 
-                DrawRubber(0);
-
+                buffer.ChangePenWigth(3);
+                RubberOptionBox.Show();           
             }
             //else if (tools == Tools.)
         }
@@ -309,30 +309,35 @@ namespace MiniPaint
 
             if (buffer.Pen.Width < 81)
             {
-                DrawRubber(3);
+                buffer.ChangePenWigth(buffer.Pen.Width + 3);
+                DrawRubber();
             }
 
         }
-            
         private void RubberMinusBTN_Click(object sender, EventArgs e)
         {
             if (buffer.Pen.Width > 3)
             {
-                DrawRubber(-3);
+                buffer.ChangePenWigth(buffer.Pen.Width -3);
+                DrawRubber();
             }
 
         }
 
-        private void DrawRubber(int x) {
-
+        private void DrawRubber()
+        {
             Graphics RubberGraphics = RubberPictureBox.CreateGraphics();
             RubberGraphics.Clear(SystemColors.Control);
-            buffer.ChangePenWigth(buffer.Pen.Width + x);
             Pen newPen = new Pen(Color.Black, 2);
 
             RubberGraphics.DrawRectangle(newPen, 45 - buffer.Pen.Width / 2, 45 - buffer.Pen.Width / 2, buffer.Pen.Width, buffer.Pen.Width);
             RubberGraphics.Dispose();
+        }
 
+        private void RubberPictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (RubberOptionBox.Visible)
+                DrawRubber();
         }
     }
 }
