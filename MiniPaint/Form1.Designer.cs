@@ -502,7 +502,7 @@ namespace MiniPaint
             // 
             // LineBox
             // 
-            this.LineBox.Controls.Add(this.Line4BTN);
+            //this.LineBox.Controls.Add(this.Line4BTN);
             this.LineBox.Controls.Add(this.Line2BTN);
             this.LineBox.Controls.Add(this.Line1BTN);
             this.LineBox.Controls.Add(this.Line3BTN);
