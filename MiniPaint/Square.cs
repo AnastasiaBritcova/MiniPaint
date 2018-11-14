@@ -16,9 +16,13 @@ namespace MiniPaint
             if (flag_draw)
             {
                 Graphics gr = Graphics.FromImage(bmp);
+                //Pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
                 gr.DrawRectangle(Pen, CreateRect(start, end));
 
                 gr.Dispose();
+
+                //Bitmap temp = bmp.Clone(CreateRect(start, end), System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+                //temp.Save("temp.bmp");
             }
         }
 
@@ -26,13 +30,13 @@ namespace MiniPaint
         {
             if (!flag_draw)
                 flag_draw = true;
+                //Pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             pbx.Refresh();
             Graphics gr = pbx.CreateGraphics();
 
             end = new Point(e.X, e.Y);
 
             gr.DrawRectangle(Pen, CreateRect(start, end));
-
             gr.Dispose();
         }
 
