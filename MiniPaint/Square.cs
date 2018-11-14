@@ -17,7 +17,8 @@ namespace MiniPaint
             {
                 Graphics gr = Graphics.FromImage(bmp);
                 gr.DrawRectangle(Pen, CreateRect(start, end));
-
+                gr.DrawRectangle(Pen, CreateRect(start, end));
+                
                 gr.Dispose();
             }
         }

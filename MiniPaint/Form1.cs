@@ -9,7 +9,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace MiniPaint
 {
@@ -18,9 +17,11 @@ namespace MiniPaint
         bool flagTextEndEnter = false;
         TextBox textb;
         enum Tools
-        {line=1,elipse,square,text,fill,rubber };
+        { line = 1, elipse, square, text, fill, rubber };
 
         Tools tools = Tools.line;
+
+
 
         public Form1()
         {
@@ -29,16 +30,18 @@ namespace MiniPaint
             buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 1.5f), RightChoiceBTN.BackColor);
             buffer.ChangeStack += Buffer_ChangeStack;
             textb = new TextBox();
-            textb.BackColor = SystemColors.Control; 
+            textb.BackColor = SystemColors.Control;
 
             textb.Visible = false;
             pictureBox1.Controls.Add(textb);
             DoubleBuffered = true;
 
+            LoadTips();
+
         }
 
 
-       private void Buffer_ChangeStack(bool undo, bool redo)
+        private void Buffer_ChangeStack(bool undo, bool redo)
         {
             MenuUndo.Enabled = undo;
             MenuDo.Enabled = redo;
@@ -59,6 +62,7 @@ namespace MiniPaint
             clickFigure();
             buffer.Selected_step_init(new Line());
             tools = Tools.line;
+            RubberOptionBox.Hide();
         }
 
         private void ColorBTN1_Click(object sender, EventArgs e)
@@ -68,7 +72,7 @@ namespace MiniPaint
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (tools!=Tools.text && tools != Tools.fill)
+            if (tools != Tools.text && tools != Tools.fill)
                 buffer.MouseDown(e);
         }
 
@@ -102,6 +106,8 @@ namespace MiniPaint
             clickFigure();
             buffer.Selected_step_init(new Elipse());
             tools = Tools.elipse;
+            RubberOptionBox.Hide();
+
         }
 
         private void SquardToolsBTN_Click(object sender, EventArgs e)
@@ -111,6 +117,8 @@ namespace MiniPaint
             clickFigure();
             buffer.Selected_step_init(new Square());
             tools = Tools.square;
+            RubberOptionBox.Hide();
+
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -128,13 +136,15 @@ namespace MiniPaint
                 textb.ScrollBars = ScrollBars.Vertical;
                 textb.Focus();
                 flagTextEndEnter = true;
+                LineBox.Hide();
+                RubberOptionBox.Hide();
             }
 
             else if (tools == Tools.text && flagTextEndEnter)
             {
                 textb.Visible = false;
                 buffer.MouseUp(e);
-                ClearTextBox();   
+                ClearTextBox();
             }
         }
 
@@ -146,6 +156,7 @@ namespace MiniPaint
 
             clickFigure();
             LineBox.Hide();
+            RubberOptionBox.Hide();
             buffer.Selected_step_init(new TextElement());
             tools = Tools.text;
         }
@@ -158,6 +169,7 @@ namespace MiniPaint
             WidthLineBTN.Enabled = true;
             buffer.Selected_step_init(new Rubber());
             tools = Tools.rubber;
+            LineBox.Hide();
 
         }
 
@@ -173,7 +185,7 @@ namespace MiniPaint
             ClearTextBox();
         }
 
-      
+
         private void ColorBTN2_Click(object sender, EventArgs e)
         {
             ChangeColour(Color.Red);
@@ -224,6 +236,11 @@ namespace MiniPaint
             ChangeColour(Color.Aqua);
         }
 
+        private void LineBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         private void Line1BTN_Click(object sender, EventArgs e)
         {
             ChangeLineBackColor(sender as Button);
@@ -264,6 +281,7 @@ namespace MiniPaint
             buffer.Selected_step_init(new Fill());
             tools = Tools.fill;
             LineBox.Hide();
+            RubberOptionBox.Hide();
         }
 
         private void clickPictureBox(object sender, EventArgs e)
@@ -289,15 +307,24 @@ namespace MiniPaint
             else if (tools == Tools.rubber)
             {
                 LineBox.Hide();
-
                 buffer.ChangePenWigth(3);
-                RubberOptionBox.Show();           
+                RubberOptionBox.Show();
             }
             //else if (tools == Tools.)
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
 
-        private void RubberPlusBTN_Click(object sender, EventArgs e) {
+        }
+
+        private void RubberOptionBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RubberPlusBTN_Click(object sender, EventArgs e)
+        {
 
             if (buffer.Pen.Width < 81)
             {
@@ -310,14 +337,16 @@ namespace MiniPaint
         {
             if (buffer.Pen.Width > 3)
             {
-                buffer.ChangePenWigth(buffer.Pen.Width -3);
+                buffer.ChangePenWigth(buffer.Pen.Width - 3);
                 DrawRubber();
             }
 
         }
 
+
         private void DrawRubber()
         {
+
             Graphics RubberGraphics = RubberPictureBox.CreateGraphics();
             RubberGraphics.Clear(SystemColors.Control);
             Pen newPen = new Pen(Color.Black, 2);
@@ -342,7 +371,7 @@ namespace MiniPaint
             saveFileDialog1.Filter = "Images|*.png;*.bmp;*.jpg";
 
             DialogResult result = saveFileDialog1.ShowDialog();
-            if (result== DialogResult.OK)
+            if (result == DialogResult.OK)
                 buffer.SaveAs(saveFileDialog1.FileName);
 
         }
@@ -366,8 +395,61 @@ namespace MiniPaint
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(pictureBox1.Image,0,0);
-            
+            e.Graphics.DrawImage(pictureBox1.Image, 0, 0);
+
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void RubberOptionBox_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuCopy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxForTools_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PencilToolsBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void LoadTips()
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.SetToolTip(this.PencilToolsBTN, "Карандаш");
+            toolTip1.SetToolTip(this.LineToolsBTN, "Линия");
+            toolTip1.SetToolTip(this.ElipseToolsBTN, "Элипс");
+            toolTip1.SetToolTip(this.SquardToolsBTN, "Прямоугольник");
+            toolTip1.SetToolTip(this.SelectToolsBTN, "Выделить");
+            toolTip1.SetToolTip(this.TextToolsBTN, "Текст");
+            toolTip1.SetToolTip(this.FillToolsBTN, "Заливка");
+            toolTip1.SetToolTip(this.RubberToolsBTN, "Ластик");
+            toolTip1.SetToolTip(this.WidthLineBTN, "Опции");
+
+
+
+
+
         }
     }
 }
