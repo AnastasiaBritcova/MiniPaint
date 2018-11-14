@@ -317,7 +317,7 @@ namespace MiniPaint
         }
         private void RubberMinusBTN_Click(object sender, EventArgs e)
         {
-            if (buffer.Pen.Width > 5)
+            if (buffer.BackPen.Width > 5)
             {
                 buffer.ChangeBackPenWigth(buffer.BackPen.Width - 3);
                 DrawRubber();
