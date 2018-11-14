@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace MiniPaint
 {
+    [Serializable]
     class Elipse :Step
     {
         public override void Draw_end()

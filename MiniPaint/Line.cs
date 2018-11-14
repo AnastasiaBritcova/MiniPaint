@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace MiniPaint
 {
+    [Serializable]
     class Line:Step
     {
         public override void Draw_move(MouseEventArgs e)

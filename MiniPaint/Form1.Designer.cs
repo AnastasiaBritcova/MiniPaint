@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace MiniPaint
 {
@@ -33,11 +34,14 @@ namespace MiniPaint
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.MenuFile = new System.Windows.Forms.ToolStripDropDownButton();
-            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьКакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.процессToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.процессToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUndo = new System.Windows.Forms.ToolStripButton();
             this.MenuDo = new System.Windows.Forms.ToolStripButton();
             this.MenuCopy = new System.Windows.Forms.ToolStripButton();
@@ -76,6 +80,10 @@ namespace MiniPaint
             this.RubberPlusBTN = new System.Windows.Forms.Button();
             this.RubberMinusBTN = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.toolStripMenu.SuspendLayout();
             this.groupBoxForTools.SuspendLayout();
             this.ColorBox.SuspendLayout();
@@ -105,46 +113,74 @@ namespace MiniPaint
             // 
             this.MenuFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.MenuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.открытьToolStripMenuItem,
-            this.сохранитьToolStripMenuItem,
-            this.сохранитьКакToolStripMenuItem,
-            this.печатьToolStripMenuItem,
-            this.выходToolStripMenuItem});
+            this.OpenToolStripMenuItem,
+            this.SaveToolStripMenuItem,
+            this.SaveAsToolStripMenuItem,
+            this.PrintToolStripMenuItem,
+            this.ExitToolStripMenuItem});
             this.MenuFile.Image = ((System.Drawing.Image)(resources.GetObject("MenuFile.Image")));
             this.MenuFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuFile.Name = "MenuFile";
             this.MenuFile.Size = new System.Drawing.Size(33, 24);
-            this.MenuFile.Text = "toolStripDropDownButton1";
+            this.MenuFile.Text = "Меню";
             // 
-            // открытьToolStripMenuItem
+            // OpenToolStripMenuItem
             // 
-            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.OpenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.процессToolStripMenuItem1});
+            this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenToolStripMenuItem.Text = "Открыть";
             // 
-            // сохранитьToolStripMenuItem
+            // процессToolStripMenuItem1
             // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.процессToolStripMenuItem1.Name = "процессToolStripMenuItem1";
+            this.процессToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.процессToolStripMenuItem1.Text = "Процесс";
+            this.процессToolStripMenuItem1.Click += new System.EventHandler(this.процессToolStripMenuItem1_Click);
             // 
-            // сохранитьКакToolStripMenuItem
+            // SaveToolStripMenuItem
             // 
-            this.сохранитьКакToolStripMenuItem.Name = "сохранитьКакToolStripMenuItem";
-            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.сохранитьКакToolStripMenuItem.Text = "Сохранить как";
+            this.SaveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.процессToolStripMenuItem,
+            this.изображениеToolStripMenuItem});
+            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToolStripMenuItem.Text = "Сохранить";
+            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
-            // печатьToolStripMenuItem
+            // процессToolStripMenuItem
             // 
-            this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-            this.печатьToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.печатьToolStripMenuItem.Text = "Печать";
+            this.процессToolStripMenuItem.Name = "процессToolStripMenuItem";
+            this.процессToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.процессToolStripMenuItem.Text = "Процесс";
+            this.процессToolStripMenuItem.Click += new System.EventHandler(this.процессToolStripMenuItem_Click);
             // 
-            // выходToolStripMenuItem
+            // изображениеToolStripMenuItem
             // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.выходToolStripMenuItem.Text = "Выход";
+            this.изображениеToolStripMenuItem.Name = "изображениеToolStripMenuItem";
+            this.изображениеToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.изображениеToolStripMenuItem.Text = "Изображение";
+            // 
+            // SaveAsToolStripMenuItem
+            // 
+            this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveAsToolStripMenuItem.Text = "Сохранить как";
+            this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
+            // 
+            // PrintToolStripMenuItem
+            // 
+            this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
+            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PrintToolStripMenuItem.Text = "Печать";
+            this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem_Click);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Text = "Выход";
             // 
             // MenuUndo
             // 
@@ -175,7 +211,7 @@ namespace MiniPaint
             this.MenuCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuCopy.Name = "MenuCopy";
             this.MenuCopy.Size = new System.Drawing.Size(24, 24);
-            this.MenuCopy.Text = "toolStripButton1";
+            this.MenuCopy.Text = "Копировать";
             // 
             // MenuPaste
             // 
@@ -184,7 +220,7 @@ namespace MiniPaint
             this.MenuPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuPaste.Name = "MenuPaste";
             this.MenuPaste.Size = new System.Drawing.Size(24, 24);
-            this.MenuPaste.Text = "toolStripButton1";
+            this.MenuPaste.Text = "Вставить";
             // 
             // groupBoxForTools
             // 
@@ -502,7 +538,6 @@ namespace MiniPaint
             // 
             // LineBox
             // 
-            //this.LineBox.Controls.Add(this.Line4BTN);
             this.LineBox.Controls.Add(this.Line2BTN);
             this.LineBox.Controls.Add(this.Line1BTN);
             this.LineBox.Controls.Add(this.Line3BTN);
@@ -524,6 +559,7 @@ namespace MiniPaint
             this.RubberOptionBox.TabIndex = 4;
             this.RubberOptionBox.TabStop = false;
             this.RubberOptionBox.Visible = false;
+            this.RubberOptionBox.Paint += new System.Windows.Forms.PaintEventHandler(this.RubberPictureBox_Paint);
             // 
             // RubberPictureBox
             // 
@@ -556,6 +592,25 @@ namespace MiniPaint
             this.RubberMinusBTN.UseVisualStyleBackColor = true;
             this.RubberMinusBTN.Click += new System.EventHandler(this.RubberMinusBTN_Click);
             // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,14 +640,19 @@ namespace MiniPaint
 
         }
 
+        private int NonSerialazible()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
         private System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.ToolStripDropDownButton MenuFile;
-        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьКакToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PrintToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton MenuUndo;
         private System.Windows.Forms.ToolStripButton MenuDo;
         private System.Windows.Forms.ToolStripButton MenuCopy;
@@ -630,8 +690,15 @@ namespace MiniPaint
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.GroupBox RubberOptionBox;
         private System.Windows.Forms.PictureBox RubberPictureBox;
-        private System.Windows.Forms.Button RubberPlusBTN;
         private System.Windows.Forms.Button RubberMinusBTN;
+        private System.Windows.Forms.Button RubberPlusBTN;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem процессToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem процессToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem изображениеToolStripMenuItem;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }
 

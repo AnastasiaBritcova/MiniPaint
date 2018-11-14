@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace MiniPaint
 {
@@ -22,6 +25,7 @@ namespace MiniPaint
         public Form1()
         {
             InitializeComponent();
+
             buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 1.5f), RightChoiceBTN.BackColor);
             buffer.ChangeStack += Buffer_ChangeStack;
             textb = new TextBox();
@@ -33,22 +37,11 @@ namespace MiniPaint
 
         }
 
-        private void Buffer_ChangeStack(int stack_count, int current)
+
+       private void Buffer_ChangeStack(bool undo, bool redo)
         {
-            if (stack_count == 0)
-                MenuDo.Enabled = MenuUndo.Enabled = false;
-            else if (current == stack_count-1)
-            {
-                MenuUndo.Enabled = true;
-                MenuDo.Enabled = false;
-            }
-            else if (current==-1)
-            {
-                MenuDo.Enabled = true;
-                MenuUndo.Enabled = false;
-            }
-            else if (current < stack_count-1)
-                MenuDo.Enabled = MenuUndo.Enabled = true;
+            MenuUndo.Enabled = undo;
+            MenuDo.Enabled = redo;
         }
 
         private void ButtonColors_Click(object sender, EventArgs e)
@@ -231,11 +224,6 @@ namespace MiniPaint
             ChangeColour(Color.Aqua);
         }
 
-        private void LineBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void Line1BTN_Click(object sender, EventArgs e)
         {
             ChangeLineBackColor(sender as Button);
@@ -298,58 +286,88 @@ namespace MiniPaint
                 RubberOptionBox.Hide();
                 LineBox.Show();
             }
-            else if (tools == Tools.rubber) {
+            else if (tools == Tools.rubber)
+            {
                 LineBox.Hide();
-                RubberOptionBox.Show();
-                DrawRubber(0);
 
+                buffer.ChangePenWigth(3);
+                RubberOptionBox.Show();           
             }
             //else if (tools == Tools.)
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RubberOptionBox_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void RubberPlusBTN_Click(object sender, EventArgs e) {
 
             if (buffer.Pen.Width < 81)
             {
-                DrawRubber(3);
+                buffer.ChangePenWigth(buffer.Pen.Width + 3);
+                DrawRubber();
             }
 
         }
-            
         private void RubberMinusBTN_Click(object sender, EventArgs e)
         {
             if (buffer.Pen.Width > 3)
             {
-                DrawRubber(-3);
+                buffer.ChangePenWigth(buffer.Pen.Width -3);
+                DrawRubber();
             }
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void DrawRubber()
         {
-
-        }
-
-        private void DrawRubber(int x) {
-
             Graphics RubberGraphics = RubberPictureBox.CreateGraphics();
             RubberGraphics.Clear(SystemColors.Control);
-            buffer.ChangePenWigth(buffer.Pen.Width + x);
             Pen newPen = new Pen(Color.Black, 2);
 
             RubberGraphics.DrawRectangle(newPen, 45 - buffer.Pen.Width / 2, 45 - buffer.Pen.Width / 2, buffer.Pen.Width, buffer.Pen.Width);
             RubberGraphics.Dispose();
+        }
 
+        private void RubberPictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (RubberOptionBox.Visible)
+                DrawRubber();
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buffer.Save();
+        }
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "Images|*.png;*.bmp;*.jpg";
+
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result== DialogResult.OK)
+                buffer.SaveAs(saveFileDialog1.FileName);
+
+        }
+
+        private void процессToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            buffer.DeserealBuffer();
+        }
+
+        private void процессToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buffer.SerealBuffer();
+        }
+
+        private void PrintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(pictureBox1.Image,0,0);
+            
         }
     }
 }
