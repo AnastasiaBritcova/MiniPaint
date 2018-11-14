@@ -124,7 +124,6 @@ namespace MiniPaint
             this.MenuFile.Name = "MenuFile";
             this.MenuFile.Size = new System.Drawing.Size(33, 24);
             this.MenuFile.Text = "Меню";
-            this.MenuFile.Click += new System.EventHandler(this.MenuFile_Click);
             // 
             // OpenToolStripMenuItem
             // 
@@ -134,7 +133,6 @@ namespace MiniPaint
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
             this.OpenToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.OpenToolStripMenuItem.Text = "Открыть";
-            this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // процессToolStripMenuItem1
             // 
@@ -158,7 +156,6 @@ namespace MiniPaint
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
             this.SaveToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.SaveToolStripMenuItem.Text = "Сохранить";
-            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // процессToolStripMenuItem
             // 

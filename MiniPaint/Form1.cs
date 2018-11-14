@@ -21,8 +21,6 @@ namespace MiniPaint
 
         Tools tools = Tools.line;
 
-
-
         public Form1()
         {
             InitializeComponent();
@@ -31,14 +29,30 @@ namespace MiniPaint
             buffer.ChangeStack += Buffer_ChangeStack;
             textb = new TextBox();
             textb.BackColor = SystemColors.Control;
+            textb.WordWrap = true;
+            textb.Size = new Size(200, 100);
 
             textb.Visible = false;
             pictureBox1.Controls.Add(textb);
+            
+            this.textb.TextChanged += delegate
+            {
+                Size oldSize = this.textb.Size;
+                Size newSize = textb.GetPreferredSize(oldSize);
+                this.textb.Height = newSize.Height;
+                this.textb.Width = newSize.Width;
+                Point loc = textb.Location;
+                if (textb.Location.X + textb.Width >= pictureBox1.Width)
+                    loc.X = pictureBox1.Width - textb.Width;
+                if (textb.Location.Y + textb.Height >= pictureBox1.Height)
+                    loc.Y = pictureBox1.Height - textb.Height;
+                textb.Location = loc;
+            };
             DoubleBuffered = true;
 
             LoadTips();
-
         }
+         
 
 
         private void Buffer_ChangeStack(bool undo, bool redo)
@@ -60,6 +74,7 @@ namespace MiniPaint
             if (flagTextEndEnter)
                 buffer.MouseUp((MouseEventArgs)e); 
             clickFigure();
+            LineToolsBTN.TabIndex = 0;
             buffer.Selected_step_init(new Line());
             tools = Tools.line;
             RubberOptionBox.Hide();
@@ -100,6 +115,7 @@ namespace MiniPaint
                 buffer.MouseUp((MouseEventArgs)e); 
 
             clickFigure();
+            ElipseToolsBTN.TabIndex = 0;
             buffer.Selected_step_init(new Elipse());
             tools = Tools.elipse;
             RubberOptionBox.Hide();
@@ -111,6 +127,7 @@ namespace MiniPaint
             if (flagTextEndEnter)
                 buffer.MouseUp((MouseEventArgs)e); 
             clickFigure();
+            SquardToolsBTN.TabIndex = 0;
             buffer.Selected_step_init(new Square());
             tools = Tools.square;
             RubberOptionBox.Hide();
@@ -121,15 +138,14 @@ namespace MiniPaint
         {
             if (tools == Tools.text && flagTextEndEnter == false)
             {
-                buffer.MouseDown(e); // возможно сделать отдельный метод (или переименовать это)
+                buffer.MouseDown(e);
 
                 textb.Location = e.Location;
-                textb.Size = new Size(100, 100); // должен задаваться в зависимости от выбранного шрифта
+                textb.Size = new Size(200, 100);
                 textb.Visible = true;
                 textb.Multiline = true;
                 textb.BorderStyle = BorderStyle.None;
 
-                textb.ScrollBars = ScrollBars.Vertical;
                 textb.Focus();
                 flagTextEndEnter = true;
                 LineBox.Hide();
@@ -151,6 +167,7 @@ namespace MiniPaint
                 buffer.MouseUp((MouseEventArgs)e);
 
             clickFigure();
+            TextToolsBTN.TabIndex = 0;
             LineBox.Hide();
             RubberOptionBox.Hide();
             buffer.Selected_step_init(new TextElement());
@@ -160,9 +177,10 @@ namespace MiniPaint
         private void RubberToolsBTN_Click(object sender, EventArgs e)
         {
             if (flagTextEndEnter)
-                buffer.MouseUp((MouseEventArgs)e); // проверить, как это работает
+                buffer.MouseUp((MouseEventArgs)e);
             clickFigure();
             WidthLineBTN.Enabled = true;
+            RubberToolsBTN.TabIndex = 0;
             buffer.Selected_step_init(new Rubber());
             tools = Tools.rubber;
             LineBox.Hide();
@@ -271,6 +289,7 @@ namespace MiniPaint
         {
             WidthLineBTN.Enabled = false;
             buffer.Selected_step_init(new Fill());
+            FillToolsBTN.TabIndex = 0;
             tools = Tools.fill;
             LineBox.Hide();
             RubberOptionBox.Hide();
@@ -298,10 +317,9 @@ namespace MiniPaint
             }
             else if (tools == Tools.rubber)
             {
-                    LineBox.Hide();;
-                    RubberOptionBox.Show();
+                LineBox.Hide();;
+                RubberOptionBox.Show();
             }
-            //else if (tools == Tools.)
         }
 
 
@@ -317,12 +335,11 @@ namespace MiniPaint
         }
         private void RubberMinusBTN_Click(object sender, EventArgs e)
         {
-            if (buffer.BackPen.Width > 5)
+            if (buffer.Pen.Width > 5)
             {
                 buffer.ChangeBackPenWigth(buffer.BackPen.Width - 3);
                 DrawRubber();
             }
-
         }
 
 
@@ -343,15 +360,9 @@ namespace MiniPaint
                 DrawRubber();
         }
 
-        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             buffer.SaveAs(saveFileDialog1);
-
         }
 
         private void процессToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -396,12 +407,6 @@ namespace MiniPaint
         private void SerialBTN_Click(object sender, EventArgs e)
         {
             buffer.SerealBuffer();
-
-        }
-
-        private void MenuFile_Click(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -416,10 +421,6 @@ namespace MiniPaint
             buffer.Save(saveFileDialog1);
         }
 
-        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void файлToolStripMenuItem_Click(object sender, EventArgs e)
         {

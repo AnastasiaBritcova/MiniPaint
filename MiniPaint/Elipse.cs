@@ -28,11 +28,9 @@ namespace MiniPaint
                 flag_draw = true;
             pbx.Refresh();
             Graphics gr = pbx.CreateGraphics();
-
             end = new Point(e.X, e.Y);
 
             gr.DrawEllipse(Pen, CreateRect(start, end));
-
             gr.Dispose();
         }
 

@@ -44,7 +44,6 @@ namespace MiniPaint
             Pen = _pen;
 
             // здесь стандартный инструмент 
-            // 
             selected_step = new Line();
             pbx = _pbx;
             InitBmp(pbx.Image as Bitmap);
@@ -228,6 +227,7 @@ namespace MiniPaint
 
             }
         }
+
         public void Open() {
             OpenFileDialog openDialog = new OpenFileDialog();
             DialogResult result = openDialog.ShowDialog();

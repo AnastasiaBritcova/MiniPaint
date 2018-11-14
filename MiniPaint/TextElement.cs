@@ -13,17 +13,17 @@ namespace MiniPaint
 
         public override void Draw_end()
         {
-            Graphics gr = Graphics.FromImage(bmp);
             TextBox textb = pbx.Controls[0] as TextBox;
-            
-
             if (textb!=null)
             {
+                Graphics gr = Graphics.FromImage(bmp);
                 gr.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-                TextRenderer.DrawText(gr, textb.Text, textb.Font, textb.Location, Pen.Color);
-            }
 
-            gr.Dispose();
+                TextFormatFlags flags = TextFormatFlags.WordBreak;
+                TextRenderer.DrawText(gr, textb.Text, textb.Font, new Rectangle(textb.Location, new Size(textb.Width, textb.Height)), Pen.Color, flags);
+                gr.Dispose();
+                pbx.Refresh();
+            }
         }
 
         public override void Draw_move(MouseEventArgs e)

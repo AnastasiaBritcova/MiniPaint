@@ -26,7 +26,6 @@ namespace MiniPaint
 
         public override void Draw_move(MouseEventArgs e)
         {
-            //pbx.Refresh();
             Graphics gr = pbx.CreateGraphics();
             start = new Point(e.X, e.Y);
             SolidBrush brush = new SolidBrush(BackPen.Color);

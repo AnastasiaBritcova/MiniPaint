@@ -8,18 +8,13 @@ using System.Windows.Forms;
 
 namespace MiniPaint
 {
-  
     class OpenIMG : Step
     {
         public override void Draw_end()
-        {
-       
-        }
+        {   }
 
         public override void Draw_move(MouseEventArgs e)
-        {
-     
-        }
+        {    }
 
         public override Step GetNewObj()
         {

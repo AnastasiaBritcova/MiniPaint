@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-
-//https://lodev.org/cgtutor/floodfill.html
-
 namespace MiniPaint
 {
     class Fill : Step
@@ -27,11 +24,7 @@ namespace MiniPaint
         {
             base.set_start(st, _pbx, _pen, back);
             FillLines(st.X, st.Y, bmp.GetPixel(st.X, st.Y), Pen.Color);
-
-            // FillMethod(st.X, st.Y, bmp.GetPixel(st.X, st.Y), Pen.Color);
         }
-
-
 
         private void FillLines(int x, int y, Color begin, Color newColor)
         {
@@ -50,7 +43,7 @@ namespace MiniPaint
                 Point current = stack.Pop();
                 tempX = current.X;
                 tempY = current.Y;
-                while (tempX >= 0 && tempX < pbx.Width && bmp.GetPixel(tempX, tempY).ToArgb() == argbBegin) // возможно вторая проверка не нужна 
+                while (tempX >= 0 && tempX < pbx.Width && bmp.GetPixel(tempX, tempY).ToArgb() == argbBegin)
                     --tempX;
                 ++tempX;
                 pixelAbove = pixelBelow = false;
