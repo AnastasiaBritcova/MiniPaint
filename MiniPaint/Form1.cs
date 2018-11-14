@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace MiniPaint
 {
@@ -232,6 +231,11 @@ namespace MiniPaint
             ChangeColour(Color.Aqua);
         }
 
+        private void LineBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         private void Line1BTN_Click(object sender, EventArgs e)
         {
             ChangeLineBackColor(sender as Button);
@@ -297,13 +301,21 @@ namespace MiniPaint
             else if (tools == Tools.rubber) {
                 LineBox.Hide();
                 RubberOptionBox.Show();
-
                 DrawRubber(0);
 
             }
             //else if (tools == Tools.)
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RubberOptionBox_Enter(object sender, EventArgs e)
+        {
+
+        }
 
         private void RubberPlusBTN_Click(object sender, EventArgs e) {
 
@@ -320,6 +332,11 @@ namespace MiniPaint
             {
                 DrawRubber(-3);
             }
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
         }
 
