@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +25,7 @@ namespace MiniPaint
         public Form1()
         {
             InitializeComponent();
+
             buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 1.5f), RightChoiceBTN.BackColor);
             buffer.ChangeStack += Buffer_ChangeStack;
             textb = new TextBox();
@@ -342,6 +345,29 @@ namespace MiniPaint
             if (result== DialogResult.OK)
                 buffer.SaveAs(saveFileDialog1.FileName);
 
+        }
+
+        private void процессToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            buffer.DeserealBuffer();
+        }
+
+        private void процессToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buffer.SerealBuffer();
+        }
+
+        private void PrintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(pictureBox1.Image,0,0);
+            
         }
     }
 }

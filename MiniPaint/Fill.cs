@@ -8,6 +8,7 @@ using System.Drawing;
 
 namespace MiniPaint
 {
+    [Serializable]
     class Fill : Step
     {
         public override void Draw_end()

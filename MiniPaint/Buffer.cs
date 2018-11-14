@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace MiniPaint
 {
+    [Serializable]
     class Buffer
     {
         public delegate void ChangeStackHandler(bool undo, bool redo);
@@ -15,8 +18,8 @@ namespace MiniPaint
 
         List<Step> steps;
         int index_current_state;
-
         Pen pen; // color font here
+
         Color colorBack; //цвет ластика
         Step selected_step;
         PictureBox pbx;
@@ -48,6 +51,9 @@ namespace MiniPaint
                 if (index_current_state == -1 && steps.Count != 0)
                     steps.Clear();
 
+                else if (index_current_state < steps.Count - 1)
+                    clearListPart();
+
                 steps.Add(selected_step);
                 index_current_state++;
 
@@ -57,6 +63,14 @@ namespace MiniPaint
                 selected_step = selected_step.GetNewObj();
             }
         }
+         
+        private void clearListPart()
+        {
+            int index = index_current_state+1;
+            while (index < steps.Count)
+                steps.RemoveAt(index);
+        }
+
 
        public void MouseDown(MouseEventArgs e)
         {
@@ -157,6 +171,29 @@ namespace MiniPaint
             Graphics gr = Graphics.FromImage(bmp);
             gr.Clear(Color.White);
             gr.Dispose();
+        }
+
+        public void SerealBuffer()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream FS = new FileStream(@"save.dat", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(FS, steps);
+            }
+        }
+
+        public void DeserealBuffer()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream FS = new FileStream(@"save.dat", FileMode.OpenOrCreate))
+            {
+                steps=(List<Step>)formatter.Deserialize(FS);
+                pbx.Image = steps.Last().GetBitmap();
+                index_current_state = steps.Count - 1;
+                if (ChangeStack != null)
+                    CountChangeStack(steps.Count, index_current_state);
+
+            }
         }
     }
 }

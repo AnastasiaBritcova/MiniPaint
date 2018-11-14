@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace MiniPaint
 {
+    [Serializable]
     class Rubber : Step
     {
         public override void set_start(Point st, PictureBox _pbx, Pen _pen, Color back)

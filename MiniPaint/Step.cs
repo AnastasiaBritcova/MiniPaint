@@ -8,14 +8,17 @@ using System.Windows.Forms;
 
 namespace MiniPaint
 {
+    [Serializable]
     abstract class Step
     {
+        [NonSerialized()]
         private Pen pen;
         protected Color colorBack;
         protected Point start;
         protected Point end;
         protected Bitmap bmp;
-    
+
+        [NonSerialized()]
         protected PictureBox pbx;
         protected bool flag_draw;
 
