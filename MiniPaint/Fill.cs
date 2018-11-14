@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
+
+//https://lodev.org/cgtutor/floodfill.html
+
 namespace MiniPaint
 {
-    [Serializable]
     class Fill : Step
     {
         public override void Draw_end()
@@ -22,80 +24,59 @@ namespace MiniPaint
             return new Fill();
         }
         public override void set_start(Point st, PictureBox _pbx, Pen _pen, Color color)
-        {           
+        {
             base.set_start(st, _pbx, _pen, color);
-            
-            FillMethod(st.X, st.Y, bmp.GetPixel(st.X, st.Y), Pen.Color);
+            FillLines(st.X, st.Y, bmp.GetPixel(st.X, st.Y), Pen.Color);
+
+            // FillMethod(st.X, st.Y, bmp.GetPixel(st.X, st.Y), Pen.Color);
         }
 
 
-        private void FillMethod(int x, int y, Color begin, Color newCol)
+
+        private void FillLines(int x, int y, Color begin, Color newColor)
         {
+            if (begin.ToArgb() == newColor.ToArgb())
+                return;
             int argbBegin = begin.ToArgb();
-            int argbNew = newCol.ToArgb();
+            int argbNew = newColor.ToArgb();
 
-            Point start = new Point(x, y);
-                FillYUp(x, y, begin, newCol);
-                FillYDown(x, y + 1, begin, newCol);
-
-            //x = start.X - 1;
-            //y = start.Y;
-            ////FillXLeft(x, y, begin, newCol);
-
-            //x = start.X + 1;
-            //y = start.Y;
-            ////FillXRight(x, y, begin, newCol);
-        }
-
-        private void FillYUp(int x, int y, Color begin, Color newCol)
-        {
-            int argbBegin = begin.ToArgb();
-            int argbNew = newCol.ToArgb();
-            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
-                bmp.GetPixel(x, y).ToArgb() == argbBegin && bmp.GetPixel(x, y).ToArgb() != argbNew)
+            int tempX = x;
+            int tempY = y;
+            Stack<Point> stack = new Stack<Point>();
+            bool pixelAbove, pixelBelow;
+            stack.Push(new Point(tempX, y));
+            while (stack.Count != 0)
             {
-                bmp.SetPixel(x, y, newCol);
-                FillXLeft(x-1, y, begin, newCol);
-                FillXRight(x + 1, y, begin, newCol);
-                y -= 1;
-            }
-        }
-        
-        private void FillYDown(int x, int y, Color begin, Color newCol)
-        {
-            int argbBegin = begin.ToArgb();
-            int argbNew = newCol.ToArgb();
-            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
-                bmp.GetPixel(x, y).ToArgb() == argbBegin && bmp.GetPixel(x, y).ToArgb() != argbNew)
-            {
-                bmp.SetPixel(x, y, newCol);
-                FillXRight(x + 1, y, begin, newCol);
-                FillXLeft(x - 1, y, begin, newCol);
-                y += 1;
-            }
-        }
+                Point current = stack.Pop();
+                tempX = current.X;
+                tempY = current.Y;
+                while (tempX >= 0 && tempX < pbx.Width && bmp.GetPixel(tempX, tempY).ToArgb() == argbBegin) // возможно вторая проверка не нужна 
+                    --tempX;
+                ++tempX;
+                pixelAbove = pixelBelow = false;
 
-        private void FillXLeft(int x, int y, Color begin, Color newCol)
-        {
-            int argbBegin = begin.ToArgb();
-            int argbNew = newCol.ToArgb();
-            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
-                bmp.GetPixel(x, y).ToArgb() == argbBegin && bmp.GetPixel(x, y).ToArgb() != argbNew)
-            {
-                bmp.SetPixel(x, y, newCol);
-                x -= 1;
-            }
-        }
+                while (tempX < pbx.Width && bmp.GetPixel(tempX, tempY).ToArgb() == argbBegin)
+                {
+                    bmp.SetPixel(tempX, tempY, newColor);
 
-        private void FillXRight(int x, int y, Color begin, Color newCol)
-        {
-            int argbBegin = begin.ToArgb();
-            int argbNew = newCol.ToArgb();
-            while (x >= 0 && y >= 0 && y < pbx.Height && x < pbx.Width &&
-                bmp.GetPixel(x, y).ToArgb() == argbBegin && bmp.GetPixel(x, y).ToArgb() != argbNew)
-            {
-                bmp.SetPixel(x, y, newCol);
-                x += 1;
+                    if (!pixelAbove && tempY > 0 && bmp.GetPixel(tempX, tempY - 1).ToArgb() == argbBegin)
+                    {
+                        stack.Push(new Point(tempX, tempY - 1));
+                        pixelAbove = true;
+                    }
+                    else if (pixelAbove && tempY > 0 && bmp.GetPixel(tempX, tempY - 1).ToArgb() != argbBegin)
+                        pixelAbove = false;
+
+                    if (!pixelBelow && tempY < pbx.Height - 1 && bmp.GetPixel(tempX, tempY + 1).ToArgb() == argbBegin)
+                    {
+                        stack.Push(new Point(tempX, tempY + 1));
+                        pixelBelow = true;
+                    }
+                    else if (pixelBelow && tempY < pbx.Height - 1 && bmp.GetPixel(tempX, tempY + 1).ToArgb() != argbBegin)
+                        pixelBelow = false;
+
+                    ++tempX;
+                }
             }
         }
     }
