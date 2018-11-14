@@ -19,10 +19,11 @@ namespace MiniPaint
         List<Step> steps;
         int index_current_state;
         Pen pen; // color font here
+        Pen backPen;
 
-        Color colorBack; //цвет ластика
         Step selected_step;
         PictureBox pbx;
+        String way = "";
 
         public Pen Pen
         {
@@ -30,32 +31,45 @@ namespace MiniPaint
             set { pen = value; }
         }
 
-        public Buffer(PictureBox _pbx, Pen _pen, Color back)
+        public Pen BackPen
+        {
+            get { return backPen; }
+            set { backPen = value; }
+        }
+
+        public Buffer(PictureBox _pbx, Pen _pen, Pen back)
         {
             steps = new List<Step>();
             index_current_state = -1;
             Pen = _pen;
 
             // здесь стандартный инструмент 
+            // 
             selected_step = new Line();
             pbx = _pbx;
             InitBmp(pbx.Image as Bitmap);
-            colorBack = back;
+            BackPen = back;
         }
+        private void changeSteps()
+        {
+            if (index_current_state == -1 && steps.Count != 0)
+                steps.Clear();
+
+            else if (index_current_state < steps.Count - 1)
+                clearListPart();
+
+            index_current_state++;
+        }
+
 
         public void MouseUp(MouseEventArgs e) 
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left && selected_step.Pen!=null)
             {
                 selected_step.Draw_end();
-                if (index_current_state == -1 && steps.Count != 0)
-                    steps.Clear();
-
-                else if (index_current_state < steps.Count - 1)
-                    clearListPart();
+                changeSteps();
 
                 steps.Add(selected_step);
-                index_current_state++;
 
                 if (ChangeStack != null)
                     CountChangeStack(steps.Count, index_current_state);
@@ -75,12 +89,12 @@ namespace MiniPaint
        public void MouseDown(MouseEventArgs e)
         {
                if (e.Button == MouseButtons.Left)
-                selected_step.set_start(e.Location, pbx, Pen, colorBack);
+                    selected_step.set_start(e.Location, pbx, Pen, BackPen);
         }
 
         public void MouseMove(MouseEventArgs e)
         {
-                if (e.Button == MouseButtons.Left)
+                if (e.Button == MouseButtons.Left && selected_step.Pen!=null)
                     selected_step.Draw_move(e);
         }
 
@@ -146,24 +160,43 @@ namespace MiniPaint
 
         public void ChangeBackColour(Color col)
         {
-            colorBack = col;
+            BackPen.Color = col;
         }
 
-        public void Save()
+        public void ChangeBackPenWigth(float wigth)
         {
+            BackPen.Width = wigth;
+        }
+
+        public void Save(SaveFileDialog saveFileDialog1)
+        {
+            if (way == "")
+            {
+                SaveAs(saveFileDialog1);
+                way = saveFileDialog1.FileName;
+            }
+            else
+                pbx.Image.Save(way);
 
         }
-        public void SaveAs(string path)
+        public void SaveAs(SaveFileDialog saveFileDialog1)
         {
-            string format = path.Substring(path.Length - 3);
-            System.Drawing.Imaging.ImageFormat fm = System.Drawing.Imaging.ImageFormat.Bmp;
+            saveFileDialog1.Filter = "Images|*.png;*.bmp;*.jpg";
 
-            if(format == "jpg")
-                fm = System.Drawing.Imaging.ImageFormat.Jpeg;
-            else if (format == "png")
-                fm = System.Drawing.Imaging.ImageFormat.Png;
-           
-            pbx.Image.Save(path, fm);  
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string path = saveFileDialog1.FileName;
+                string format = path.Substring(path.Length - 3);
+                System.Drawing.Imaging.ImageFormat fm = System.Drawing.Imaging.ImageFormat.Bmp;
+
+                if (format == "jpg")
+                    fm = System.Drawing.Imaging.ImageFormat.Jpeg;
+                else if (format == "png")
+                    fm = System.Drawing.Imaging.ImageFormat.Png;
+
+                pbx.Image.Save(path, fm);
+            }
         }
 
         private void InitBmp(Bitmap bmp)
@@ -194,6 +227,21 @@ namespace MiniPaint
                     CountChangeStack(steps.Count, index_current_state);
 
             }
+        }
+        public void Open() {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            DialogResult result = openDialog.ShowDialog();
+            if (result == DialogResult.OK) {
+                pbx.Image = Image.FromFile(openDialog.FileName);
+                Step newStep = new OpenIMG();
+                newStep.set_start(new Point(0,0),pbx, Pen, backPen );
+                changeSteps();
+                steps.Add(newStep);
+
+                if (ChangeStack != null)
+                    CountChangeStack(steps.Count, index_current_state);
+            }
+             
         }
     }
 }

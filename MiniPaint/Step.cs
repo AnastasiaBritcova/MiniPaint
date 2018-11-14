@@ -13,7 +13,9 @@ namespace MiniPaint
     {
         [NonSerialized()]
         private Pen pen;
-        protected Color colorBack;
+
+        [NonSerialized()]
+        private Pen backPen;
         protected Point start;
         protected Point end;
         protected Bitmap bmp;
@@ -22,23 +24,29 @@ namespace MiniPaint
         protected PictureBox pbx;
         protected bool flag_draw;
 
-        protected Pen Pen
+        public Pen Pen
         {
             get { return pen; }
             set { pen = value; }
         }
 
+        protected Pen BackPen
+        {
+            get { return backPen; }
+            set { backPen = value; }
+        }
+
         public Bitmap GetBitmap()
         { return bmp; }
 
-        public virtual void set_start(Point st, PictureBox _pbx, Pen _pen, Color color) // maybe abstract
+        public virtual void set_start(Point st, PictureBox _pbx, Pen _pen, Pen back) 
         {
             start = st;
             pbx = _pbx;
             Pen = _pen;
             bmp = new Bitmap(pbx.Image, pbx.Width, pbx.Height);
             pbx.Image = bmp;
-            colorBack = color;
+            BackPen = back;
         }
         
         public abstract void Draw_move(MouseEventArgs e);

@@ -36,6 +36,7 @@ namespace MiniPaint
             this.MenuFile = new System.Windows.Forms.ToolStripDropDownButton();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.процессToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.процессToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,9 +44,9 @@ namespace MiniPaint
             this.PrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUndo = new System.Windows.Forms.ToolStripButton();
-            this.MenuDo = new System.Windows.Forms.ToolStripButton();
-            this.MenuCopy = new System.Windows.Forms.ToolStripButton();
-            this.MenuPaste = new System.Windows.Forms.ToolStripButton();
+            this.RedoBTN = new System.Windows.Forms.ToolStripButton();
+            this.SerialBTN = new System.Windows.Forms.ToolStripButton();
+            this.DeserialBTN = new System.Windows.Forms.ToolStripButton();
             this.groupBoxForTools = new System.Windows.Forms.GroupBox();
             this.WidthLineBTN = new System.Windows.Forms.Button();
             this.RubberToolsBTN = new System.Windows.Forms.Button();
@@ -84,9 +85,6 @@ namespace MiniPaint
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PencilToolsBTN = new System.Windows.Forms.Button();
-            this.SelectToolsBTN = new System.Windows.Forms.Button();
             this.toolStripMenu.SuspendLayout();
             this.groupBoxForTools.SuspendLayout();
             this.ColorBox.SuspendLayout();
@@ -103,9 +101,9 @@ namespace MiniPaint
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuFile,
             this.MenuUndo,
-            this.MenuDo,
-            this.MenuCopy,
-            this.MenuPaste});
+            this.RedoBTN,
+            this.SerialBTN,
+            this.DeserialBTN});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(975, 27);
@@ -126,6 +124,7 @@ namespace MiniPaint
             this.MenuFile.Name = "MenuFile";
             this.MenuFile.Size = new System.Drawing.Size(33, 24);
             this.MenuFile.Text = "Меню";
+            this.MenuFile.Click += new System.EventHandler(this.MenuFile_Click);
             // 
             // OpenToolStripMenuItem
             // 
@@ -133,16 +132,23 @@ namespace MiniPaint
             this.процессToolStripMenuItem1,
             this.файлToolStripMenuItem});
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.OpenToolStripMenuItem.Text = "Открыть";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // процессToolStripMenuItem1
             // 
             this.процессToolStripMenuItem1.Name = "процессToolStripMenuItem1";
-            this.процессToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.процессToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.процессToolStripMenuItem1.Text = "Процесс";
             this.процессToolStripMenuItem1.Click += new System.EventHandler(this.процессToolStripMenuItem1_Click);
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.файлToolStripMenuItem.Text = "Изображение";
+            this.файлToolStripMenuItem.Click += new System.EventHandler(this.файлToolStripMenuItem_Click);
             // 
             // SaveToolStripMenuItem
             // 
@@ -150,41 +156,42 @@ namespace MiniPaint
             this.процессToolStripMenuItem,
             this.изображениеToolStripMenuItem});
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.SaveToolStripMenuItem.Text = "Сохранить";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // процессToolStripMenuItem
             // 
             this.процессToolStripMenuItem.Name = "процессToolStripMenuItem";
-            this.процессToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.процессToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.процессToolStripMenuItem.Text = "Процесс";
             this.процессToolStripMenuItem.Click += new System.EventHandler(this.процессToolStripMenuItem_Click);
             // 
             // изображениеToolStripMenuItem
             // 
             this.изображениеToolStripMenuItem.Name = "изображениеToolStripMenuItem";
-            this.изображениеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.изображениеToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.изображениеToolStripMenuItem.Text = "Изображение";
+            this.изображениеToolStripMenuItem.Click += new System.EventHandler(this.изображениеToolStripMenuItem_Click);
             // 
             // SaveAsToolStripMenuItem
             // 
             this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.SaveAsToolStripMenuItem.Text = "Сохранить как";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // PrintToolStripMenuItem
             // 
             this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
-            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.PrintToolStripMenuItem.Text = "Печать";
             this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -199,40 +206,39 @@ namespace MiniPaint
             this.MenuUndo.Text = "Отменить";
             this.MenuUndo.Click += new System.EventHandler(this.MenuUndo_Click);
             // 
-            // MenuDo
+            // RedoBTN
             // 
-            this.MenuDo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MenuDo.Enabled = false;
-            this.MenuDo.Image = ((System.Drawing.Image)(resources.GetObject("MenuDo.Image")));
-            this.MenuDo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuDo.Name = "MenuDo";
-            this.MenuDo.Size = new System.Drawing.Size(24, 24);
-            this.MenuDo.Text = "Вернуть";
-            this.MenuDo.Click += new System.EventHandler(this.MenuDo_Click);
+            this.RedoBTN.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RedoBTN.Enabled = false;
+            this.RedoBTN.Image = ((System.Drawing.Image)(resources.GetObject("RedoBTN.Image")));
+            this.RedoBTN.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RedoBTN.Name = "RedoBTN";
+            this.RedoBTN.Size = new System.Drawing.Size(24, 24);
+            this.RedoBTN.Text = "Вернуть";
+            this.RedoBTN.Click += new System.EventHandler(this.RedoBTN_Click);
             // 
-            // MenuCopy
+            // SerialBTN
             // 
-            this.MenuCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MenuCopy.Image = ((System.Drawing.Image)(resources.GetObject("MenuCopy.Image")));
-            this.MenuCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuCopy.Name = "MenuCopy";
-            this.MenuCopy.Size = new System.Drawing.Size(24, 24);
-            this.MenuCopy.Text = "Копировать";
-            this.MenuCopy.Click += new System.EventHandler(this.MenuCopy_Click);
+            this.SerialBTN.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SerialBTN.Image = ((System.Drawing.Image)(resources.GetObject("SerialBTN.Image")));
+            this.SerialBTN.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SerialBTN.Name = "SerialBTN";
+            this.SerialBTN.Size = new System.Drawing.Size(24, 24);
+            this.SerialBTN.Text = "Сохранить процесс";
+            this.SerialBTN.Click += new System.EventHandler(this.SerialBTN_Click);
             // 
-            // MenuPaste
+            // DeserialBTN
             // 
-            this.MenuPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.MenuPaste.Image = ((System.Drawing.Image)(resources.GetObject("MenuPaste.Image")));
-            this.MenuPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuPaste.Name = "MenuPaste";
-            this.MenuPaste.Size = new System.Drawing.Size(24, 24);
-            this.MenuPaste.Text = "Вставить";
+            this.DeserialBTN.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DeserialBTN.Image = ((System.Drawing.Image)(resources.GetObject("DeserialBTN.Image")));
+            this.DeserialBTN.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeserialBTN.Name = "DeserialBTN";
+            this.DeserialBTN.Size = new System.Drawing.Size(24, 24);
+            this.DeserialBTN.Text = "Возобновить процесс";
+            this.DeserialBTN.Click += new System.EventHandler(this.DeserialBTN_Click);
             // 
             // groupBoxForTools
             // 
-            this.groupBoxForTools.Controls.Add(this.SelectToolsBTN);
-            this.groupBoxForTools.Controls.Add(this.PencilToolsBTN);
             this.groupBoxForTools.Controls.Add(this.WidthLineBTN);
             this.groupBoxForTools.Controls.Add(this.RubberToolsBTN);
             this.groupBoxForTools.Controls.Add(this.FillToolsBTN);
@@ -240,19 +246,18 @@ namespace MiniPaint
             this.groupBoxForTools.Controls.Add(this.ElipseToolsBTN);
             this.groupBoxForTools.Controls.Add(this.SquardToolsBTN);
             this.groupBoxForTools.Controls.Add(this.LineToolsBTN);
-            this.groupBoxForTools.Location = new System.Drawing.Point(459, 18);
+            this.groupBoxForTools.Location = new System.Drawing.Point(491, 18);
             this.groupBoxForTools.Name = "groupBoxForTools";
-            this.groupBoxForTools.Size = new System.Drawing.Size(229, 79);
+            this.groupBoxForTools.Size = new System.Drawing.Size(197, 79);
             this.groupBoxForTools.TabIndex = 1;
             this.groupBoxForTools.TabStop = false;
-            this.groupBoxForTools.Enter += new System.EventHandler(this.groupBoxForTools_Enter);
             // 
             // WidthLineBTN
             // 
             this.WidthLineBTN.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.WidthLineBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("WidthLineBTN.BackgroundImage")));
             this.WidthLineBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.WidthLineBTN.Location = new System.Drawing.Point(156, 9);
+            this.WidthLineBTN.Location = new System.Drawing.Point(118, 9);
             this.WidthLineBTN.Name = "WidthLineBTN";
             this.WidthLineBTN.Size = new System.Drawing.Size(73, 69);
             this.WidthLineBTN.TabIndex = 6;
@@ -263,7 +268,7 @@ namespace MiniPaint
             // 
             this.RubberToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RubberToolsBTN.BackgroundImage")));
             this.RubberToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.RubberToolsBTN.Location = new System.Drawing.Point(118, 44);
+            this.RubberToolsBTN.Location = new System.Drawing.Point(82, 44);
             this.RubberToolsBTN.Name = "RubberToolsBTN";
             this.RubberToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.RubberToolsBTN.TabIndex = 5;
@@ -274,7 +279,7 @@ namespace MiniPaint
             // 
             this.FillToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FillToolsBTN.BackgroundImage")));
             this.FillToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FillToolsBTN.Location = new System.Drawing.Point(80, 45);
+            this.FillToolsBTN.Location = new System.Drawing.Point(44, 46);
             this.FillToolsBTN.Name = "FillToolsBTN";
             this.FillToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.FillToolsBTN.TabIndex = 4;
@@ -286,7 +291,7 @@ namespace MiniPaint
             this.TextToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TextToolsBTN.BackgroundImage")));
             this.TextToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.TextToolsBTN.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.TextToolsBTN.Location = new System.Drawing.Point(42, 44);
+            this.TextToolsBTN.Location = new System.Drawing.Point(6, 43);
             this.TextToolsBTN.Name = "TextToolsBTN";
             this.TextToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.TextToolsBTN.TabIndex = 3;
@@ -297,7 +302,7 @@ namespace MiniPaint
             // 
             this.ElipseToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ElipseToolsBTN.BackgroundImage")));
             this.ElipseToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ElipseToolsBTN.Location = new System.Drawing.Point(80, 10);
+            this.ElipseToolsBTN.Location = new System.Drawing.Point(44, 10);
             this.ElipseToolsBTN.Name = "ElipseToolsBTN";
             this.ElipseToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.ElipseToolsBTN.TabIndex = 1;
@@ -308,7 +313,7 @@ namespace MiniPaint
             // 
             this.SquardToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SquardToolsBTN.BackgroundImage")));
             this.SquardToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SquardToolsBTN.Location = new System.Drawing.Point(118, 10);
+            this.SquardToolsBTN.Location = new System.Drawing.Point(82, 10);
             this.SquardToolsBTN.Name = "SquardToolsBTN";
             this.SquardToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.SquardToolsBTN.TabIndex = 2;
@@ -320,7 +325,7 @@ namespace MiniPaint
             this.LineToolsBTN.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LineToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LineToolsBTN.BackgroundImage")));
             this.LineToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.LineToolsBTN.Location = new System.Drawing.Point(42, 10);
+            this.LineToolsBTN.Location = new System.Drawing.Point(6, 10);
             this.LineToolsBTN.Name = "LineToolsBTN";
             this.LineToolsBTN.Size = new System.Drawing.Size(32, 32);
             this.LineToolsBTN.TabIndex = 0;
@@ -572,7 +577,6 @@ namespace MiniPaint
             this.RubberOptionBox.TabStop = false;
             this.RubberOptionBox.Visible = false;
             this.RubberOptionBox.Paint += new System.Windows.Forms.PaintEventHandler(this.RubberPictureBox_Paint);
-            this.RubberOptionBox.Enter += new System.EventHandler(this.RubberOptionBox_Enter_1);
             // 
             // RubberPictureBox
             // 
@@ -624,33 +628,6 @@ namespace MiniPaint
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // файлToolStripMenuItem
-            // 
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.файлToolStripMenuItem.Text = "Изображение";
-            // 
-            // PencilToolsBTN
-            // 
-            this.PencilToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PencilToolsBTN.BackgroundImage")));
-            this.PencilToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PencilToolsBTN.Location = new System.Drawing.Point(6, 10);
-            this.PencilToolsBTN.Name = "PencilToolsBTN";
-            this.PencilToolsBTN.Size = new System.Drawing.Size(32, 32);
-            this.PencilToolsBTN.TabIndex = 7;
-            this.PencilToolsBTN.UseVisualStyleBackColor = true;
-            this.PencilToolsBTN.Click += new System.EventHandler(this.PencilToolsBTN_Click);
-            // 
-            // SelectToolsBTN
-            // 
-            this.SelectToolsBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SelectToolsBTN.BackgroundImage")));
-            this.SelectToolsBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SelectToolsBTN.Location = new System.Drawing.Point(6, 45);
-            this.SelectToolsBTN.Name = "SelectToolsBTN";
-            this.SelectToolsBTN.Size = new System.Drawing.Size(32, 32);
-            this.SelectToolsBTN.TabIndex = 8;
-            this.SelectToolsBTN.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -666,7 +643,6 @@ namespace MiniPaint
             this.Controls.Add(this.toolStripMenu);
             this.Name = "Form1";
             this.Text = "Mini paint";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             this.groupBoxForTools.ResumeLayout(false);
@@ -695,9 +671,7 @@ namespace MiniPaint
         private System.Windows.Forms.ToolStripMenuItem PrintToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton MenuUndo;
-        private System.Windows.Forms.ToolStripButton MenuDo;
-        private System.Windows.Forms.ToolStripButton MenuCopy;
-        private System.Windows.Forms.ToolStripButton MenuPaste;
+        private System.Windows.Forms.ToolStripButton DeserialBTN;
         private System.Windows.Forms.GroupBox groupBoxForTools;
         private System.Windows.Forms.Button TextToolsBTN;
         private System.Windows.Forms.Button RubberToolsBTN;
@@ -741,8 +715,8 @@ namespace MiniPaint
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.Button SelectToolsBTN;
-        private System.Windows.Forms.Button PencilToolsBTN;
+        private System.Windows.Forms.ToolStripButton SerialBTN;
+        private System.Windows.Forms.ToolStripButton RedoBTN;
     }
 }
 
