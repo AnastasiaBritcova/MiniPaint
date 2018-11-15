@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace MiniPaint
 {
+    [Serializable]
     class TextElement : Step
     {
-
         public override void Draw_end()
         {
             TextBox textb = pbx.Controls[0] as TextBox;
