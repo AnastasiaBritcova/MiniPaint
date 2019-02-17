@@ -12,12 +12,21 @@ using System.Windows.Forms;
 
 namespace MiniPaint
 {
+    enum Tools
+    {
+        line = 1,
+        elipse,
+        square,
+        text,
+        fill,
+        rubber
+    };
+
+
     public partial class Form1 : Form
     {
         bool flagTextEndEnter = false;
-        TextBox textb;
-        enum Tools
-        { line = 1, elipse, square, text, fill, rubber };
+        TextBox textb;     
 
         Tools tools = Tools.line;
 
@@ -66,7 +75,6 @@ namespace MiniPaint
             if (colorDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             ChangeColour(colorDialog1.Color);
-
         }
 
         private void LineToolsBTN_Click(object sender, EventArgs e)
@@ -119,7 +127,6 @@ namespace MiniPaint
             buffer.Selected_step_init(new Elipse());
             tools = Tools.elipse;
             RubberOptionBox.Hide();
-
         }
 
         private void SquardToolsBTN_Click(object sender, EventArgs e)
@@ -131,7 +138,6 @@ namespace MiniPaint
             buffer.Selected_step_init(new Square());
             tools = Tools.square;
             RubberOptionBox.Hide();
-
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -184,7 +190,6 @@ namespace MiniPaint
             buffer.Selected_step_init(new Rubber());
             tools = Tools.rubber;
             LineBox.Hide();
-
         }
 
         private void ClearTextBox()
@@ -255,7 +260,6 @@ namespace MiniPaint
         {
             ChangeLineBackColor(sender as Button);
             buffer.ChangePenWigth(1.5f);
-
         }
         private void ChangeLineBackColor(Button butt)
         {
@@ -413,7 +417,6 @@ namespace MiniPaint
         private void DeserialBTN_Click(object sender, EventArgs e)
         {
             buffer.DeserealBuffer();
-
         }
 
         private void изображениеToolStripMenuItem_Click(object sender, EventArgs e)

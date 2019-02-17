@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MiniPaint
@@ -38,35 +34,5 @@ namespace MiniPaint
         {
             return new Elipse();
         }
-
-        private Rectangle CreateRect(Point start, Point end)
-        {
-            Point startPoint = new Point();
-            if (end.X >= start.X && end.Y <= start.Y)
-            {
-                startPoint.X = start.X;
-                startPoint.Y = end.Y;
-
-            }
-            else if (end.X <= start.X && end.Y <= start.Y)
-            {
-                startPoint = end;
-            }
-            else if (end.X <= start.X && end.Y >= start.Y)
-            {
-                startPoint.X = end.X;
-                startPoint.Y = start.Y;
-            }
-            else if (end.X >= start.X && end.Y >= start.Y)
-            {
-                startPoint = start;
-            }
-
-            int width = Math.Abs(end.X - start.X);
-            int height = Math.Abs(end.Y - start.Y);
-
-            return new Rectangle(startPoint.X, startPoint.Y, width, height);
-        }
-
     }
 }

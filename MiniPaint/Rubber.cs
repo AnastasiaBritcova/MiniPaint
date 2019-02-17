@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MiniPaint
@@ -18,7 +14,6 @@ namespace MiniPaint
             SolidBrush brush = new SolidBrush(BackPen.Color);
         
             gr.FillRectangle(brush, new Rectangle(start, new Size((int)BackPen.Width, (int)BackPen.Width)));
-            
         }
 
         public override void Draw_end()

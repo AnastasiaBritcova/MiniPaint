@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -43,7 +41,7 @@ namespace MiniPaint
             index_current_state = -1;
             Pen = _pen;
 
-            // здесь стандартный инструмент 
+            // Здесь стандартный инструмент.
             selected_step = new Line();
             pbx = _pbx;
             InitBmp(pbx.Image as Bitmap);
@@ -87,14 +85,14 @@ namespace MiniPaint
 
        public void MouseDown(MouseEventArgs e)
         {
-               if (e.Button == MouseButtons.Left)
-                    selected_step.set_start(e.Location, pbx, Pen, BackPen);
+            if (e.Button == MouseButtons.Left)
+                selected_step.set_start(e.Location, pbx, Pen, BackPen);
         }
 
         public void MouseMove(MouseEventArgs e)
         {
-                if (e.Button == MouseButtons.Left && selected_step.Pen!=null)
-                    selected_step.Draw_move(e);
+            if (e.Button == MouseButtons.Left && selected_step.Pen!=null)
+                selected_step.Draw_move(e);
         }
 
         public void Selected_step_init(Step step) 
@@ -149,8 +147,7 @@ namespace MiniPaint
 
         public void ChangePenColour(Color col)
         {
-            Pen.Color = col;
-            
+            Pen.Color = col;  
         }
         public void ChangePenWigth(float wigth)
         {
@@ -224,14 +221,15 @@ namespace MiniPaint
                 index_current_state = steps.Count - 1;
                 if (ChangeStack != null)
                     CountChangeStack(steps.Count, index_current_state);
-
             }
         }
 
-        public void Open() {
+        public void Open()
+        {
             OpenFileDialog openDialog = new OpenFileDialog();
             DialogResult result = openDialog.ShowDialog();
-            if (result == DialogResult.OK) {
+            if (result == DialogResult.OK)
+            {
                 pbx.Image = Image.FromFile(openDialog.FileName);
                 Step newStep = new OpenIMG();
                 newStep.set_start(new Point(0,0),pbx, Pen, backPen );
