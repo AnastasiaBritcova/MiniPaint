@@ -35,7 +35,7 @@ namespace MiniPaint
             InitializeComponent();
 
             buffer = new Buffer(pictureBox1, new Pen(leftChoiceBTN.BackColor, 1.5f), new Pen(RightChoiceBTN.BackColor, 3));
-            buffer.ChangeStack += Buffer_ChangeStack;
+            buffer.ChangeStack += BufferChangeStack;
             textb = new TextBox();
             textb.BackColor = SystemColors.Control;
             textb.WordWrap = true;
@@ -64,7 +64,7 @@ namespace MiniPaint
          
 
 
-        private void Buffer_ChangeStack(bool undo, bool redo)
+        private void BufferChangeStack(bool undo, bool redo)
         {
             MenuUndo.Enabled = undo;
             RedoBTN.Enabled = redo;
@@ -83,7 +83,7 @@ namespace MiniPaint
                 buffer.MouseUp((MouseEventArgs)e); 
             clickFigure();
             LineToolsBTN.TabIndex = 0;
-            buffer.Selected_step_init(new Line());
+            buffer.InitSelectedStep(new Line());
             tools = Tools.line;
             RubberOptionBox.Hide();
         }
@@ -124,7 +124,7 @@ namespace MiniPaint
 
             clickFigure();
             ElipseToolsBTN.TabIndex = 0;
-            buffer.Selected_step_init(new Elipse());
+            buffer.InitSelectedStep(new Elipse());
             tools = Tools.elipse;
             RubberOptionBox.Hide();
         }
@@ -135,7 +135,7 @@ namespace MiniPaint
                 buffer.MouseUp((MouseEventArgs)e); 
             clickFigure();
             SquardToolsBTN.TabIndex = 0;
-            buffer.Selected_step_init(new Square());
+            buffer.InitSelectedStep(new Square());
             tools = Tools.square;
             RubberOptionBox.Hide();
         }
@@ -176,7 +176,7 @@ namespace MiniPaint
             TextToolsBTN.TabIndex = 0;
             LineBox.Hide();
             RubberOptionBox.Hide();
-            buffer.Selected_step_init(new TextElement());
+            buffer.InitSelectedStep(new TextElement());
             tools = Tools.text;
         }
 
@@ -187,7 +187,7 @@ namespace MiniPaint
             clickFigure();
             WidthLineBTN.Enabled = true;
             RubberToolsBTN.TabIndex = 0;
-            buffer.Selected_step_init(new Rubber());
+            buffer.InitSelectedStep(new Rubber());
             tools = Tools.rubber;
             LineBox.Hide();
         }
@@ -292,7 +292,7 @@ namespace MiniPaint
         private void FillToolsBTN_Click(object sender, EventArgs e)
         {
             WidthLineBTN.Enabled = false;
-            buffer.Selected_step_init(new Fill());
+            buffer.InitSelectedStep(new Fill());
             FillToolsBTN.TabIndex = 0;
             tools = Tools.fill;
             LineBox.Hide();

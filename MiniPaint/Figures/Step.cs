@@ -22,7 +22,7 @@ namespace MiniPaint
 
         [NonSerialized()]
         protected PictureBox pbx;
-        protected bool flag_draw;
+        protected bool isDrawing;
 
         public Pen Pen
         {
@@ -39,7 +39,7 @@ namespace MiniPaint
         public Bitmap GetBitmap()
         { return bmp; }
 
-        public virtual void set_start(Point st, PictureBox _pbx, Pen _pen, Pen back) 
+        public virtual void SetStart(Point st, PictureBox _pbx, Pen _pen, Pen back) 
         {
             start = st;
             pbx = _pbx;
@@ -49,8 +49,8 @@ namespace MiniPaint
             BackPen = back;
         }
 
-        public virtual void Draw_move(MouseEventArgs e) { }
-        public virtual void Draw_end() { }
+        public virtual void DrawMove(MouseEventArgs e) { }
+        public virtual void DrawEnd() { }
         public abstract Step GetNewObj();
         protected Rectangle CreateRect(Point start, Point end)
         {

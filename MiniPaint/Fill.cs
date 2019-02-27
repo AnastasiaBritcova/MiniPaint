@@ -14,9 +14,9 @@ namespace MiniPaint
         {
             return new Fill();
         }
-        public override void set_start(Point st, PictureBox _pbx, Pen _pen, Pen back)
+        public override void SetStart(Point st, PictureBox _pbx, Pen _pen, Pen back)
         {
-            base.set_start(st, _pbx, _pen, back);
+            base.SetStart(st, _pbx, _pen, back);
             FillLines(st.X, st.Y, bmp.GetPixel(st.X, st.Y), Pen.Color);
         }
 

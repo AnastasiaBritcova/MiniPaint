@@ -11,7 +11,7 @@ namespace MiniPaint
     [Serializable]
     class TextElement : Step
     {
-        public override void Draw_end()
+        public override void DrawEnd()
         {
             TextBox textb = pbx.Controls[0] as TextBox;
             if (textb!=null)

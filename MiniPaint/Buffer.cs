@@ -15,11 +15,11 @@ namespace MiniPaint
         public event ChangeStackHandler ChangeStack;
 
         List<Step> steps;
-        int index_current_state;
+        int currentStateIndex;
         Pen pen; // color font here
         Pen backPen;
 
-        Step selected_step;
+        Step selectedStep;
         PictureBox pbx;
         String way = "";
 
@@ -38,46 +38,46 @@ namespace MiniPaint
         public Buffer(PictureBox _pbx, Pen _pen, Pen back)
         {
             steps = new List<Step>();
-            index_current_state = -1;
+            currentStateIndex = -1;
             Pen = _pen;
 
             // Здесь стандартный инструмент.
-            selected_step = new Line();
+            selectedStep = new Line();
             pbx = _pbx;
             InitBmp(pbx.Image as Bitmap);
             BackPen = back;
         }
         private void changeSteps()
         {
-            if (index_current_state == -1 && steps.Count != 0)
+            if (currentStateIndex == -1 && steps.Count != 0)
                 steps.Clear();
 
-            else if (index_current_state < steps.Count - 1)
+            else if (currentStateIndex < steps.Count - 1)
                 clearListPart();
 
-            index_current_state++;
+            currentStateIndex++;
         }
 
 
         public void MouseUp(MouseEventArgs e) 
         {
-            if (e.Button == MouseButtons.Left && selected_step.Pen!=null)
+            if (e.Button == MouseButtons.Left && selectedStep.Pen!=null)
             {
-                selected_step.Draw_end();
+                selectedStep.DrawEnd();
                 changeSteps();
 
-                steps.Add(selected_step);
+                steps.Add(selectedStep);
 
                 if (ChangeStack != null)
-                    CountChangeStack(steps.Count, index_current_state);
+                    CountChangeStack(steps.Count, currentStateIndex);
 
-                selected_step = selected_step.GetNewObj();
+                selectedStep = selectedStep.GetNewObj();
             }
         }
          
         private void clearListPart()
         {
-            int index = index_current_state+1;
+            int index = currentStateIndex+1;
             while (index < steps.Count)
                 steps.RemoveAt(index);
         }
@@ -86,61 +86,61 @@ namespace MiniPaint
        public void MouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                selected_step.set_start(e.Location, pbx, Pen, BackPen);
+                selectedStep.SetStart(e.Location, pbx, Pen, BackPen);
         }
 
         public void MouseMove(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && selected_step.Pen!=null)
-                selected_step.Draw_move(e);
+            if (e.Button == MouseButtons.Left && selectedStep.Pen!=null)
+                selectedStep.DrawMove(e);
         }
 
-        public void Selected_step_init(Step step) 
+        public void InitSelectedStep(Step step) 
         {
-            selected_step = step;
+            selectedStep = step;
         }
 
         public void UnDo()
         {
-            if (index_current_state == 0)
+            if (currentStateIndex == 0)
             {
                 pbx.Image = new Bitmap(pbx.Width, pbx.Height);
                 InitBmp(pbx.Image as Bitmap);
-                index_current_state--;
+                currentStateIndex--;
             }
             else
             {
-                index_current_state--;
-                pbx.Image = steps[index_current_state].GetBitmap();
+                currentStateIndex--;
+                pbx.Image = steps[currentStateIndex].GetBitmap();
             }
 
             if (ChangeStack != null)
-                CountChangeStack(steps.Count, index_current_state);
+                CountChangeStack(steps.Count, currentStateIndex);
         }
 
         public void ReDo()
         {
-            if (index_current_state!=steps.Count-1)
+            if (currentStateIndex!=steps.Count-1)
             {
-                index_current_state++;
-                pbx.Image = steps[index_current_state].GetBitmap();
+                currentStateIndex++;
+                pbx.Image = steps[currentStateIndex].GetBitmap();
             }
             if (ChangeStack != null)
-                CountChangeStack(steps.Count, index_current_state);
+                CountChangeStack(steps.Count, currentStateIndex);
         }
 
-        private void CountChangeStack(int stack_count, int current)
+        private void CountChangeStack(int stackCount, int current)
         {
-            if (stack_count == 0)
+            if (stackCount == 0)
                 ChangeStack(false, false);
 
-            else if (current == stack_count - 1)
+            else if (current == stackCount - 1)
                 ChangeStack(true, false);
 
             else if (current == -1)
                 ChangeStack(false, true);
 
-            else if (current < stack_count - 1)
+            else if (current < stackCount - 1)
                 ChangeStack(true, true);
         }
 
@@ -218,9 +218,9 @@ namespace MiniPaint
             {
                 steps=(List<Step>)formatter.Deserialize(FS);
                 pbx.Image = steps.Last().GetBitmap();
-                index_current_state = steps.Count - 1;
+                currentStateIndex = steps.Count - 1;
                 if (ChangeStack != null)
-                    CountChangeStack(steps.Count, index_current_state);
+                    CountChangeStack(steps.Count, currentStateIndex);
             }
         }
 
@@ -232,12 +232,12 @@ namespace MiniPaint
             {
                 pbx.Image = Image.FromFile(openDialog.FileName);
                 Step newStep = new OpenIMG();
-                newStep.set_start(new Point(0,0),pbx, Pen, backPen );
+                newStep.SetStart(new Point(0,0),pbx, Pen, backPen );
                 changeSteps();
                 steps.Add(newStep);
 
                 if (ChangeStack != null)
-                    CountChangeStack(steps.Count, index_current_state);
+                    CountChangeStack(steps.Count, currentStateIndex);
             }
              
         }

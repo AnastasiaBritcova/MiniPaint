@@ -6,10 +6,10 @@ namespace MiniPaint
 {
     class OpenIMG : Step
     {
-        public override void Draw_end()
+        public override void DrawEnd()
         {   }
 
-        public override void Draw_move(MouseEventArgs e)
+        public override void DrawMove(MouseEventArgs e)
         {    }
 
         public override Step GetNewObj()
@@ -17,9 +17,9 @@ namespace MiniPaint
             return new OpenIMG();
         }
 
-        public override void set_start(Point st, PictureBox _pbx, Pen _pen, Pen back)
+        public override void SetStart(Point st, PictureBox _pbx, Pen _pen, Pen back)
         {
-            base.set_start(st, _pbx, _pen, back);
+            base.SetStart(st, _pbx, _pen, back);
         }
     }
 }

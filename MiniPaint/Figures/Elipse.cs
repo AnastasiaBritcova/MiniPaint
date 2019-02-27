@@ -7,9 +7,9 @@ namespace MiniPaint
     [Serializable]
     class Elipse :Step
     {
-        public override void Draw_end()
+        public override void DrawEnd()
         {
-            if (flag_draw)
+            if (isDrawing)
             {
                 Graphics gr = Graphics.FromImage(bmp);
                 gr.DrawEllipse(Pen, CreateRect(start, end));
@@ -18,10 +18,10 @@ namespace MiniPaint
             }
         }
 
-        public override void Draw_move(MouseEventArgs e)
+        public override void DrawMove(MouseEventArgs e)
         {
-            if (!flag_draw)
-                flag_draw = true;
+            if (!isDrawing)
+                isDrawing = true;
             pbx.Refresh();
             Graphics gr = pbx.CreateGraphics();
             end = new Point(e.X, e.Y);
