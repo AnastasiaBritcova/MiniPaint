@@ -16,9 +16,6 @@ namespace MiniPaint
             gr.FillRectangle(brush, new Rectangle(start, new Size((int)BackPen.Width, (int)BackPen.Width)));
         }
 
-        public override void Draw_end()
-        { }
-
         public override void Draw_move(MouseEventArgs e)
         {
             Graphics gr = pbx.CreateGraphics();

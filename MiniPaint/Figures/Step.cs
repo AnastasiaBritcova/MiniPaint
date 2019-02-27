@@ -48,9 +48,9 @@ namespace MiniPaint
             pbx.Image = bmp;
             BackPen = back;
         }
-        
-        public abstract void Draw_move(MouseEventArgs e);
-        public abstract void Draw_end();
+
+        public virtual void Draw_move(MouseEventArgs e) { }
+        public virtual void Draw_end() { }
         public abstract Step GetNewObj();
         protected Rectangle CreateRect(Point start, Point end)
         {

@@ -26,10 +26,6 @@ namespace MiniPaint
             }
         }
 
-        public override void Draw_move(MouseEventArgs e)
-        {
-            
-        }
         public override Step GetNewObj()
         {
             return new TextElement();

@@ -10,12 +10,6 @@ namespace MiniPaint
 {
     class Fill : Step
     {
-        public override void Draw_end()
-        { }
-
-        public override void Draw_move(MouseEventArgs e)
-        { }
-
         public override Step GetNewObj()
         {
             return new Fill();
